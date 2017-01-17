@@ -24,6 +24,13 @@
   cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
   proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
+  <script id="posts-template" type="text/template">
+  <ul>
+    <% posts.forEach(function(post) { %>
+      <li><%= post.message %></li>
+    <% }) %>
+  </ul>
+  </script>
 
   <script src="main.js"></script>
 

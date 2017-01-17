@@ -1,16 +1,16 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongo = require('mongodb').MongoClient;
-var url = process.env.MONGODB_URI || 'mongodb://localhost:27017/sanbox';
+var url = process.env.MONGODB_URI || 'mongodb://localhost:27017/sandbox';
 
 var app = express();
 
-//Middleware
-app.use(express.static(__dirname + 'public'));
+// Middleware
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 
-//Routes
+// Routes
 
 // GET '/posts'
 app.get('/posts', function(req, res) {
@@ -22,20 +22,20 @@ app.get('/posts', function(req, res) {
   });
 });
 
-//POST /posts
+// POST /posts
 app.post('/posts', function(req, res) {
   var post = {
-    message: req.body.message;
+    message: req.body.message
   };
   mongo.connect(url, function(err, db) {
     db.collection('posts').insertOne(post, function(err, result) {
       db.close();
       res.json(result);
     });
-  };
+  })
 });
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
-  console.log('UP! Port ' + port);
+  console.log('Listening on port ' + port);
 });

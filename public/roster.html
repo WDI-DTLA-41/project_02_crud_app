@@ -9,27 +9,24 @@
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
   <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
-  <h1>Starlings San Gabriel Team Manager</h1>
+  <h1>Roster</h1>
 
   <input type="text" placeholder="Enter Team (12s, 14s)" id="message">
   <button id="createPost">Create</button>
 
   <div id="posts"></div>
 
- <p>Enter your teams name (for example 16s Bringas) if it doesn't already exist.
+  Enter your teams name (for example 16s Bringas) if it doesn't already exist.
   If it does, click on it to manage your team's schedule, roster and results
-  page.</p>
-
-  <a href="/results.html">Results Page</a>
-  <a href="/roster.html">Roster Page</a>
-  <a href="/schedule.html">Schedule Page</a>
+  page.
 
   <script id="posts-template" type="text/template">
   <ul>
     <% posts.forEach(function(post) { %>
-      <li><%= post.message %> <button class="x">X</button> </li>
+      <li><%= post.message %></li>
     <% }) %>
   </ul>
   </script>

@@ -1,0 +1,14 @@
+html {
+  background: rgba(0, 34, 75, 0.6);
+}
+
+a {
+  display: block;
+  margin-top: 5px;
+}
+
+.x {
+  display: inline;
+  height: 20px;
+  width: 20px;
+}

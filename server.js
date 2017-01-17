@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongo = require('mongodb').MongoClient;
 var url = process.env.MONGODB_URI || 'mongodb://localhost:27017/sandbox';
-
+var assert = require('assert');
 var app = express();
 
 // Middleware
@@ -37,6 +37,30 @@ app.get('/teams', function(req, res) {
     });
   });
 });
+
+app.get('/teams/:name', function(req, res) {
+  mongo.connect(url, function(err, db) {
+    var name = req.params.name;
+    var html;
+
+    var findDocuments = function(db, callback) {
+      var collection = db.collection('posts');
+      collection.find({message: name}).toArray(function(err, docs) {
+        assert.equal(err, null);
+        console.log(name)
+        console.log("found the following, ", docs)
+        html = docs[0].message;
+        callback(docs);
+      });
+    }
+    findDocuments(db, function() {
+      db.close();
+      res.send(html + " <a href='/schedule'>Schedule</a>");
+    })
+    })
+  })
+
+
 
 // app.get('/schedule', function(req, res) {
 //   mongo.connect(url, function(err, db) {

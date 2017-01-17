@@ -1,6 +1,4 @@
-console.log('hi from main.js')
-
-$('createPost').on('click', function(evt) {
+$('#createPost').on('click', function(evt) {
   var message = $('#message').val();
   $.post('/posts', {message: message}, function(res) {
     $('ul').append('<li>' + message + '</li>');

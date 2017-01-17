@@ -22,6 +22,31 @@ app.get('/posts', function(req, res) {
   });
 });
 
+app.get('/teams', function(req, res) {
+  mongo.connect(url, function(err, db) {
+    db.collection('posts').find({}).toArray(function(err, docs) {
+      db.close();
+      var teams = docs[0].message;
+      var html = '<ul>'
+      console.log(teams);
+      docs.forEach(function(team) {
+        html += "<a href='" + "/teams/" + team.message + "'>" + "<li>" + team.message + "</li>" + "</a>";
+      })
+      html += "</ul>"
+      res.send(html);
+    });
+  });
+});
+
+// app.get('/schedule', function(req, res) {
+//   mongo.connect(url, function(err, db) {
+//     db.collection('schedule').find({}).toArray(function(err, docs) {
+//       db.close();
+//       res.json({schedule: docs})
+//     })
+//   })
+// })
+
 // POST /posts
 app.post('/posts', function(req, res) {
   var post = {

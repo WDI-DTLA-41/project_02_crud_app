@@ -25,6 +25,9 @@ app.get('/posts', function(req, res) {
 //POST /posts
 app.post('/posts', function(req, res) {
   var post = {
+    message: req.body.message;
+  };
+  mongo.connect(url, function(err, db) {
     db.collection('posts').insertOne(post, function(err, result) {
       db.close();
       res.json(result);

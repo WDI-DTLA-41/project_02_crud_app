@@ -25,18 +25,33 @@ app.get('/posts', function(req, res) {
 app.get('/teams', function(req, res) {
   mongo.connect(url, function(err, db) {
     db.collection('posts').find({}).toArray(function(err, docs) {
-      db.close();
-      var teams = docs[0].message;
+      // var teams = docs[0].message;
       var html = '<ul>'
-      console.log(teams);
+      // console.log(teams);
       docs.forEach(function(team) {
         html += "<a href='" + "/teams/" + team.message + "'>" + "<li>" + team.message + "</li>" + "</a>";
       })
       html += "</ul>"
+      db.close();
       res.send(html);
     });
   });
 });
+
+app.get('/schedule', function(req, res) {
+  mongo.connect(url, function(err, db) {
+    db.collection('posts').find({}).toArray(function(err, docs) {
+      var html = '<ul>'
+      var teams = docs[0]
+      console.log(docs[0].schedule)
+       docs.forEach(function(team) {
+        html += '<li>' + team.message + " Schedules: " + team.schedule + '</li>';
+      })
+      html += "</ul>"
+      res.send(html);
+    })
+  })
+})
 
 app.get('/teams/:name', function(req, res) {
   mongo.connect(url, function(err, db) {

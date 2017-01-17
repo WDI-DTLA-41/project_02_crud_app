@@ -2,34 +2,64 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Proj 2 crud</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">  <title>Proj 2 crud</title>
   <script
       src="https://code.jquery.com/jquery-3.1.1.js"
     integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="header">
+  <ul class="nav nav-pills">
+  <li role="presentation"><a href="/">Home</a></li>
+  <li role="presentation" class="active"><a href="/teams.html">Teams</a></li>
+  <li role="presentation"><a href="/roster.html">Roster</a></li>
+  <li role="presentation"><a href="/results.html">Results</a></li>
+  <li role="presentation"><a href="/schedule.html">Schedule</a></li>
+</ul>
+</div>
+
+
   <h1>Teams</h1>
 
   <input type="text" placeholder="Enter Team (12s, 14s)" id="message">
   <button id="createPost">Create</button>
 
+
   <div id="posts"></div>
 
-  Enter your teams name (for example 16s Bringas) if it doesn't already exist.
+ <p>Enter your teams name (for example 16s Bringas) if it doesn't already exist.
   If it does, click on it to manage your team's schedule, roster and results
-  page.
+  page.</p>
+
+
+
+  <a href="/results.html">Results Page</a>
+
+  <button type="button" class="edit" aria-label="Left Align">
+  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+
+  </button>
+  <button type="button" class="x" aria-label="Left Align">
+  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+  </button>
+
+  <a href="/roster.html">Roster Page</a>
+  <a href="/schedule.html">Schedule Page</a>
 
   <script id="posts-template" type="text/template">
   <ul>
     <% posts.forEach(function(post) { %>
-      <li><%= post.message %></li>
+      <li><%= post.message %><button class="edit">Edit</button><button class="x">X</button></li>
     <% }) %>
   </ul>
   </script>
-
+  <script src ="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="main.js"></script>
-
 </body>
 </html>

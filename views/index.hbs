@@ -1,0 +1,44 @@
+<h1>{{title}}</h1>
+<nav class='navbar navbar-inverse navbar-static-top'>
+    <div class='container'>
+        <div class='navBar-header'>
+            <button type='button' class='navbar-toggle-collapsed' data-toggle='collapse' data-target='#navbar-collapseOne' aria-expanded='false'>
+                <span class='toggleNavi'>Toggle</span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+            </button>
+            <a class='navbar-name' href='#'>Stuff Stuff and More Stuff</a>
+        </div>
+        <div class='collapse navBar' id='#navbar-collapseOne'>
+            <ul class='nav navbar-right'>
+                <li><a href='#'>Home</a></li>
+                <li class='dropdown'>
+                    <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Posts<span class='posts'></span></a>
+                    <ul class='dropdown-menu'>
+                        <li><a href='#'>Top</a></li>
+                        <li><a href='#'>New</a></li>
+                        <li><a href='#'>All</a></li>
+                    </ul>
+                </li>
+                <li><a href='#'>About</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<nav class='nav'>
+    <div class='container'>
+    <div class='col-md-3' id='#'>Home</div>
+    <div class='col-md-3' id='#'>Posts</div>
+    <div class='col-md-3' id='#'>About</div>
+    <div class='col-md-3' id='#'>Contact</div>
+    </div>
+</nav>
+
+<section>
+    <form method='POST' action='/posts'>
+        <input type='text' id='inputPost'>
+        <button id='blogPost'>Submit</button>
+    </form>
+</section>

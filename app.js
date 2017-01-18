@@ -1,6 +1,7 @@
 var express = require('express');
 var path = require('path');
 var morgan = require('morgan');
+var favicon = require('serve-favicon');
 var bodyParser = require('body-parser');
 var hbs = require('express-handlebars');
 
@@ -13,6 +14,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 app.use(morgan('dev'));
+app.use(favicon(__dirname + '/public/favicon3.ico'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 

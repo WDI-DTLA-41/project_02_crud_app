@@ -15,6 +15,7 @@ app.set('view engine', 'ejs');
 // GET '/posts'
 app.get('/posts', function(req, res) {
   mongo.connect(url, function(err, db) {
+    if (err) return db(err);
     db.collection('posts').find({}).toArray(function(err, docs) {
       db.close();
       res.json({posts: docs});
@@ -24,6 +25,7 @@ app.get('/posts', function(req, res) {
 
 app.get('/teams', function(req, res) {
   mongo.connect(url, function(err, db) {
+    if (err) return db(err);
     db.collection('posts').find({}).toArray(function(err, docs) {
       // var teams = docs[0].message;
       var html = '<ul>'
@@ -40,36 +42,39 @@ app.get('/teams', function(req, res) {
 
 app.get('/roster', function(req, res) {
   mongo.connect(url, function(err, db) {
-  db.collection('posts').find({}).toArray(function(err, docs) {
-    var html = '<ul>'
+    if (err) return db(err);
+    db.collection('posts').find({}).toArray(function(err, docs) {
+      var html = '<ul>'
     // console.log(teams);
-    docs.forEach(function(team) {
-      html += "<li>" +team.message + ' roster: ' + team.roster + "</li>";
+      docs.forEach(function(team) {
+        html += "<li>" +team.message + ' roster: ' + team.roster + "</li>";
     })
-    html += "</ul>"
-    db.close();
-    res.send(html);
+      html += "</ul>"
+      db.close();
+      res.send(html);
     });
   });
 });
 
 app.get('/results', function(req, res) {
   mongo.connect(url, function(err, db) {
-  db.collection('posts').find({}).toArray(function(err, docs) {
-    var html = '<ul>'
+    if (err) return db(err);
+    db.collection('posts').find({}).toArray(function(err, docs) {
+      var html = '<ul>'
     // console.log(teams);
-    docs.forEach(function(team) {
-      html += "<li>" +team.message + ' results: ' + team.results + "</li>";
-    })
-    html += "</ul>"
-    db.close();
-    res.send(html);
+      docs.forEach(function(team) {
+        html += "<li>" +team.message + ' results: ' + team.results + "</li>";
+      })
+      html += "</ul>"
+      db.close();
+      res.send(html);
     });
   });
 });
 
 app.get('/schedule', function(req, res) {
   mongo.connect(url, function(err, db) {
+    if (err) return db(err);
     db.collection('posts').find({}).toArray(function(err, docs) {
       var html = '<ul>'
       var teams = docs[0]
@@ -79,9 +84,9 @@ app.get('/schedule', function(req, res) {
       })
       html += "</ul>"
       res.send(html);
-    })
-  })
-})
+    });
+  });
+});
 
 app.get('/teams/:name', function(req, res) {
   mongo.connect(url, function(err, db) {
@@ -105,17 +110,6 @@ app.get('/teams/:name', function(req, res) {
     })
   })
 
-
-
-// app.get('/schedule', function(req, res) {
-//   mongo.connect(url, function(err, db) {
-//     db.collection('schedule').find({}).toArray(function(err, docs) {
-//       db.close();
-//       res.json({schedule: docs})
-//     })
-//   })
-// })
-
 // POST /posts
 app.post('/posts', function(req, res) {
   var post = {
@@ -128,6 +122,21 @@ app.post('/posts', function(req, res) {
     });
   })
 });
+
+// //FIND AND UPDATE WIP
+// app.post('/posts', function(req, res) {
+//   var post = {
+//     message: req.body.message
+//   };
+//   mongo.connect(url, function(err, db) {
+//     db.collection('posts').insertOne(post, function(err, result) {
+//       db.close();
+//       res.json(result);
+//     });
+//   })
+// });
+
+//Run Server
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {

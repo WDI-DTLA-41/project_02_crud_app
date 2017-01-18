@@ -8,7 +8,7 @@ $('#createPost').on('click', function(evt) {
   if(teamName.val() === '' || roster.val() === '') return;
   else {
     $.post('/posts', {teams: obj}, function(res) {
-      $('ul').append('<li>' + teamName.val() + " " + roster.val() + editButton + xButton +  '</li>');
+      $('#teamslist').append('<li>' + teamName.val() + " " + roster.val() + editButton + xButton +  '</li>');
       document.querySelector('#teamName').value = "";
       document.querySelector('#roster').value = "";
   });

@@ -30,29 +30,20 @@
   <input type="text" placeholder="Enter Schdule" id="sch">
   <button id="createSch">Create Schedule</button>
 
+  <div id="posts">
+    <script id="posts-template" type="text/template">
+    <ul>
+      <% posts.forEach(function(post) { %>
+      <% var teams = post.teams %>
+        <li><%= teams.teamName + ": " + teams.roster + editButton + xButton%></li>
+      <% }) %>
+    </ul>
+    </script>
+  </div>
 
-  <div id="posts"></div>
+ <p>Enter your teams Schedule (Mandatory 1: 2/4/17)</p>
 
- <p>Enter your teams name (for example 16s Bringas) if it doesn't already exist.
-  If it does, click on it to manage your team's schedule, roster and results
-  page.</p>
 
-  <button type="button" class="edit" aria-label="Left Align">
-  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-
-  </button>
-  <button type="button" class="x" aria-label="Left Align">
-  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-  </button>
-
-  <script id="posts-template" type="text/template">
-  <ul>
-    <% posts.forEach(function(post) { %>
-    <% var teams = post.teams %>
-      <li><%= teams.teamName + ": " + teams.roster + editButton + xButton%></li>
-    <% }) %>
-  </ul>
-  </script>
   <script src ="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="main.js"></script>
 </body>

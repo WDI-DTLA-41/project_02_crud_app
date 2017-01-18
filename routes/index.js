@@ -5,29 +5,20 @@ var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 
 var url = 'mongodb://localhost:27017/chatRoom';
-
+var title = { title: 'FenixChat.com'};
 // Home Page
 router.get('/', function(req, resp, next) {
-  resp.render('index', {title: 'FenixChat.com'});
+  resp.render('index', title);
 });
 
-router.get('/registry', function(req, resp, next){
-
-  if(req.query.logIn === 'login'){
-    redirect('/registry/logIn');
-  } else if(req.query.signUp === 'signup'){
-      redirect('/registry/signUp');
-    }
-  resp.render('index', {title: 'FenixChat.com'});
+router.get('/login', function(req, resp, next){
+  resp.render('login', title);
 })
 
-router.get('/registry/login', function(req, resp, next){
-  resp.render();
+router.get('/signup', function(req, resp, next){
+  resp.render('signup', title);
 })
 
-router.get('/registry/signup', function(req, resp, next){
-  resp.render();
-})
 // CREATE Data
 
 // READ Data

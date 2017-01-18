@@ -1,3 +1,7 @@
+body {
+  width: 100%;
+}
+
 header {
   width:18%;
   height: 7em;
@@ -16,6 +20,25 @@ header>form {
 nav {
   display:inline-block;
   vertical-align: bottom;
+}
+
+#regForm {
+  margin: 0 40% 0 40%;
+  border:1px solid black;
+  line-height: 3em;
+  float: left;
+  text-align: center;
+}
+
+#regForm>input {
+
+}
+#regForm>label {
+
+}
+
+#regForm>button {
+
 }
 
 #chatForum {

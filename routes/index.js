@@ -4,7 +4,7 @@ var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 
-var url = 'mongodb://localhost:27017/Project';
+var url = process.env.MONGODB_URI || 'mongodb://localhost:27017/Project';
 
 router.get('/', function(req, res, next) {
   res.render('index', {title: 'Stuff and more Stuff'});

@@ -4,11 +4,13 @@ var mongo = require('mongodb').MongoClient;
 var url = process.env.MONGODB_URI || 'mongodb://localhost:27017/sandbox';
 var assert = require('assert');
 var app = express();
+var morgan = require('morgan');
 
 // Middleware
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
+app.use(morgan('dev'));
 
 // Routes
 
@@ -113,7 +115,7 @@ app.get('/teams/:name', function(req, res) {
 // POST /posts
 app.post('/posts', function(req, res) {
   var post = {
-    message: req.body.message
+    teams: req.body.teams
   };
 
   mongo.connect(url, function(err, db) {

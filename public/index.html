@@ -27,7 +27,7 @@
 
   <h1>Starlings San Gabriel Team Manager</h1>
   <form accept-charset="utf-8">
-  <input type="text" placeholder="Enter Team (12s, 14s)" id="message">
+  <input type="text" placeholder="Enter Team (12s, 14s)" id="teamName">
   <input type="text" placeholder="Enter Roster" id="roster">
   </form>
   <button id="createPost">Add Team</button>
@@ -54,7 +54,8 @@
     <% var xButton = '<button type="button" class="x" aria-label="Left Align"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>' %>
 
     <% posts.forEach(function(post) { %>
-      <li><%= post['message']['message'] + post.message.roster + editButton + xButton%></li>
+    <% var teams = post.teams %>
+      <li><%= teams.teamName + ": " + teams.roster + editButton + xButton%></li>
     <% }) %>
   </ul>
   </script>

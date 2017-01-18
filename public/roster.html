@@ -46,18 +46,11 @@
   </tbody>
 </table>
 
-  <button type="button" class="edit" aria-label="Left Align">
-  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-
-  </button>
-  <button type="button" class="x" aria-label="Left Align">
-  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-  </button>
 
   <script id="posts-template" type="text/template">
   <ul>
     <% posts.forEach(function(post) { %>
-      <li><%= post.message %><button class="edit">Edit</button><button class="x">X</button></li>
+      <li><%= post['message']['message'] + ": " + post.message.roster + editButton + xButton%></li>
     <% }) %>
   </ul>
   </script>

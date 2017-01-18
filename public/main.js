@@ -1,15 +1,15 @@
 $('#createPost').on('click', function(evt) {
-  var message = $('#message');
+  var teamName = $('#teamName');
   var roster = $('#roster');
   var button = "<button>X</button>"
   var obj = {};
-  obj.message = message.val();
+  obj.teamName = teamName.val();
   obj.roster = roster.val();
-  if(message.val() === '' || roster.val() === '') return;
+  if(teamName.val() === '' || roster.val() === '') return;
   else {
-    $.post('/posts', {message: obj}, function(res) {
-      $('ul').append('<li>' + message.val() + " " + roster.val() + editButton + xButton +  '</li>');
-      document.querySelector('#message').value = "";
+    $.post('/posts', {teams: obj}, function(res) {
+      $('ul').append('<li>' + teamName.val() + " " + roster.val() + editButton + xButton +  '</li>');
+      document.querySelector('#teamName').value = "";
       document.querySelector('#roster').value = "";
   });
   }

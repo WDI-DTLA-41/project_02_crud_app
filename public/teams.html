@@ -47,8 +47,10 @@
 
   <script id="posts-template" type="text/template">
   <ul>
+
     <% posts.forEach(function(post) { %>
-      <li><a href="#"><%= post.message %></a><button class="edit">Edit</button><button class="x">X</button></li>
+      <% var team = post.message %>
+      <li><%= "<a href='/teams/" + team.message + "'>" + team.message + "</a>" + editButton + xButton %> </li>
     <% }) %>
   </ul>
   </script>

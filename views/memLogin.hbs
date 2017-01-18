@@ -15,8 +15,18 @@
 </nav>
 <hr>
 
-<form action='/memLogin' method='POST'>
-  <input type='text' name='userNameEntry' placeholder='Username'>
-  <input type='text' name='passWordEntry' placeholder='Password'>
-  <button value=userName>Log In</button>
-</form>
+<h3>All Chat Rooms</h3>
+<h5>Politics</h5>
+<h5>Religion</h5>
+<h5>Sports</h5>
+<h5>Technology</h5>
+<h5>Console Gaming</h5>
+<h5>Troll and War Room</h5>
+<h5>Daily Query</h5>
+<h5>Random Chat</h5>
+
+<div id="chatForum">
+{{# each memberUse }}
+    {{ this.fullName }} <p>has this number: {{this._id}}
+{{/each}}
+</div>

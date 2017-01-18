@@ -37,10 +37,6 @@
   If it does, click on it to manage your team's schedule, roster and results
   page.</p>
 
-
-
-  <a href="/results.html">Results Page</a>
-
   <button type="button" class="edit" aria-label="Left Align">
   <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 
@@ -49,13 +45,10 @@
   <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
   </button>
 
-  <a href="/roster.html">Roster Page</a>
-  <a href="/schedule.html">Schedule Page</a>
-
   <script id="posts-template" type="text/template">
   <ul>
     <% posts.forEach(function(post) { %>
-      <li><%= post.message %><button class="edit">Edit</button><button class="x">X</button></li>
+      <li><a href="#"><%= post.message %></a><button class="edit">Edit</button><button class="x">X</button></li>
     <% }) %>
   </ul>
   </script>

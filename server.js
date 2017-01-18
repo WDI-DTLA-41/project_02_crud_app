@@ -38,6 +38,36 @@ app.get('/teams', function(req, res) {
   });
 });
 
+app.get('/roster', function(req, res) {
+  mongo.connect(url, function(err, db) {
+  db.collection('posts').find({}).toArray(function(err, docs) {
+    var html = '<ul>'
+    // console.log(teams);
+    docs.forEach(function(team) {
+      html += "<li>" +team.message + ' roster: ' + team.roster + "</li>";
+    })
+    html += "</ul>"
+    db.close();
+    res.send(html);
+    });
+  });
+});
+
+app.get('/results', function(req, res) {
+  mongo.connect(url, function(err, db) {
+  db.collection('posts').find({}).toArray(function(err, docs) {
+    var html = '<ul>'
+    // console.log(teams);
+    docs.forEach(function(team) {
+      html += "<li>" +team.message + ' results: ' + team.results + "</li>";
+    })
+    html += "</ul>"
+    db.close();
+    res.send(html);
+    });
+  });
+});
+
 app.get('/schedule', function(req, res) {
   mongo.connect(url, function(err, db) {
     db.collection('posts').find({}).toArray(function(err, docs) {

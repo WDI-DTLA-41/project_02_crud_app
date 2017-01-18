@@ -11,6 +11,20 @@ $('#createPost').on('click', function(evt) {
 
 });
 
+$('#createSch').on('click', function(evt) {
+  var message = $('#sch');
+  var button = "<button>X</button>"
+  if(message.val() === '') return;
+  else {
+    console.log('clicked on schedule button')
+    $.post('/posts', {message: message.val()}, function(res) {
+      $('ul').append('<li>' + message.val() + '</li>');
+      document.querySelector('#sch').value = "";
+  });
+  }
+
+});
+
 $('.edit').click(function(event) {
   console.log('edit button clicked')
 });

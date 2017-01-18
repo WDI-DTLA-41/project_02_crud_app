@@ -3,7 +3,7 @@ html {
 }
 
 a {
-  display: block;
+  display: inline;
   margin-top: 5px;
 }
 

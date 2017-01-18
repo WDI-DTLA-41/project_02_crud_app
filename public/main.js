@@ -8,7 +8,7 @@ $('#createPost').on('click', function(evt) {
   if(teamName.val() === '' || roster.val() === '') return;
   else {
     $.post('/posts', {teams: obj}, function(res) {
-      $('#teamslist').append('<li>' + teamName.val() + " " + roster.val() + editButton + xButton +  '</li>');
+      $('#teamslist').append('<li class="list">' + teamName.val() + " " + roster.val() + editButton + xButton +  '</li>');
       document.querySelector('#teamName').value = "";
       document.querySelector('#roster').value = "";
   });
@@ -16,33 +16,31 @@ $('#createPost').on('click', function(evt) {
 
 });
 
-$('#createSch').on('click', function(evt) {
-  var message = $('#sch');
-  var button = "<button>X</button>"
-  if(message.val() === '') return;
-  else {
-    console.log('clicked on schedule button')
-    $.post('/posts', {message: message.val()}, function(res) {
-      $('ul').append('<li>' + message.val() + '</li>');
-      document.querySelector('#sch').value = "";
-  });
-  }
 
-});
 
 var editButton = '<button type="button" class="edit" aria-label="Left Align"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>';
 var xButton = '<button type="button" class="x" aria-label="Left Align"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>'
 
 function editClick (evt) {
-  console.log('edit button clicked')
+var target = this;
+var team = target.parentElement.textContent;
+console.log(team)
 }
 
-function editX (evt) {
-  console.log('X button clicked')
+function xClick (evt) {
+  var target = this;
+  var team = target.parentElement.textContent;
+  var teamName = team.split(':')[0];
+  console.log(teamName, 'deleted');
+  this.parentNode.remove()
+  // debugger;
+  // $.post('/posts/delete', function(res) {
+  //   team = "dead"
+  // })
 }
 
 $(document).on('click', '.edit', editClick);
-$(document).on('click', '.x', editX);
+$(document).on('click', '.x', xClick);
 
 // $('.edit').click(
 

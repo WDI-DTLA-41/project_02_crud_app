@@ -90,26 +90,29 @@ app.get('/schedule', function(req, res) {
   });
 });
 
-app.get('/teams/:name', function(req, res) {
-  mongo.connect(url, function(err, db) {
-    var name = req.params.name;
-    var html;
+app.get('/teams/:teamName', function(req, res) {
 
-    var findDocuments = function(db, callback) {
-      var collection = db.collection('posts');
-      collection.find({message: name}).toArray(function(err, docs) {
-        assert.equal(err, null);
-        console.log(name)
-        console.log("found the following, ", docs)
-        html = docs[0].message;
-        callback(docs);
-      });
-    }
-    findDocuments(db, function() {
-      db.close();
-      res.send(html + " <a href='/schedule'>Schedule</a>");
-    })
-    })
+  res.send(req.params.teamName)
+
+  // mongo.connect(url, function(err, db) {
+  //   var name = req.params.teamName;
+  //   var html;
+
+  //   var findDocuments = function(db, callback) {
+  //     var collection = db.collection('posts');
+  //     collection.find({teams: teamName}).toArray(function(err, docs) {
+  //       assert.equal(err, null);
+  //       console.log(name)
+  //       console.log("found the following, ", docs)
+  //       html = docs[0].message;
+  //       callback(docs);
+  //     });
+  //   }
+  //   findDocuments(db, function() {
+  //     db.close();
+  //     res.send(html + " <a href='/schedule'>Schedule</a>");
+  //   })
+  // })
   })
 
 // POST /posts

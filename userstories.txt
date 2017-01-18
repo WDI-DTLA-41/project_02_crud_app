@@ -1,0 +1,2 @@
+As a user, I will be able to add teams to the site and then edit or delete the
+fields of the roster, schedule and tournament results.

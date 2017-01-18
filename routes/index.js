@@ -8,11 +8,36 @@ var url = 'mongodb://localhost:27017/chatRoom';
 var title = { title: 'FenixChat.com'};
 // Home Page
 router.get('/', function(req, resp, next) {
-  resp.render('index', title);
+    var result = [];
+    mongo.connect(url, function(err, db){
+      assert.equal(null, err);
+      var dbOutPut = db.collection('members').find({_id: objectId(req.query.userId)});
+          dbOutPut.forEach(function(ind, err){
+            assert.equal(null, err);
+            result.push(ind);
+            },function(){
+                db.close();
+                resp.render('index', {memberUse: result, title: 'FenixChat.com'});
+              }
+          );
+
+    });
 });
 
 router.get('/signup', function(req, resp, next){
-  resp.render('signup', title);
+    var result = [];
+    mongo.connect(url, function(err, db){
+      assert.equal(null, err);
+      var dbOutPut = db.collection('members').find({_id: objectId(req.query.userId)});
+          dbOutPut.forEach(function(ind, err){
+            assert.equal(null, err);
+            result.push(ind);
+            },function(){
+                db.close();
+                resp.render('signup', {memberUse: result, title: 'FenixChat.com'});              }
+          );
+
+    });
 });
 
 router.get('/login', function(req, resp, next){

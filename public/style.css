@@ -3,7 +3,7 @@ body {
 }
 
 header {
-  width:18%;
+  width:18em;
   height: 7em;
   background: url("http://orig00.deviantart.net/6229/f/2013/114/8/5/gggggggggg_by_bensuit-d62v1ey.gif");
   background-repeat: no-repeat;
@@ -17,9 +17,19 @@ header>form {
   display: inline-block;
 }
 
+header>form>button{
+  color: red;
+}
+
 nav {
+  margin-left:15em;
   display:inline-block;
   vertical-align: bottom;
+}
+
+nav>a {
+  padding-left:1em;
+  padding-right:.5em;
 }
 
 #regForm {
@@ -39,6 +49,27 @@ nav {
 
 #regForm>button {
 
+}
+
+#allChat {
+  text-align:center;
+}
+
+#chatLodges {
+  border:1px solid black;
+  text-align: center;
+}
+
+#chatLodges>li {
+  padding-left:3em;
+  display: inline-block;
+}
+
+#userId {
+  display:inline-block;
+  vertical-align: top;
+  float:right;
+  line-height: 0%;
 }
 
 #chatForum {

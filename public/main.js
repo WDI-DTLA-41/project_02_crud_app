@@ -25,9 +25,22 @@ $('#createSch').on('click', function(evt) {
 
 });
 
-$('.edit').click(function(event) {
+function editClick (evt) {
   console.log('edit button clicked')
-});
+}
+
+function editX (evt) {
+  console.log('X button clicked')
+}
+
+$(document).on('click', '.edit', editClick);
+$(document).on('click', '.x', editX);
+
+// $('.edit').click(
+
+//   function (event) {
+//   console.log('edit button clicked')
+// });
 
 $('.x').click(function(event) {
   console.log('x has been clicked')

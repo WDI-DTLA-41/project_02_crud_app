@@ -14,3 +14,7 @@ button {
 body {
   background: rgba(208, 228, 242, 1);
 }
+
+table {
+  background: lightgray;
+}

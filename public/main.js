@@ -1,11 +1,16 @@
 $('#createPost').on('click', function(evt) {
   var message = $('#message');
+  var roster = $('#roster');
   var button = "<button>X</button>"
-  if(message.val() === '') return;
+  var obj = {};
+  obj.message = message.val();
+  obj.roster = roster.val();
+  if(message.val() === '' || roster.val() === '') return;
   else {
-    $.post('/posts', {message: message.val()}, function(res) {
-      $('ul').append('<li>' + message.val() + '</li>');
+    $.post('/posts', {message: obj}, function(res) {
+      $('ul').append('<li>' + message.val() + " " + roster.val() + editButton + xButton +  '</li>');
       document.querySelector('#message').value = "";
+      document.querySelector('#roster').value = "";
   });
   }
 
@@ -24,6 +29,9 @@ $('#createSch').on('click', function(evt) {
   }
 
 });
+
+var editButton = '<button type="button" class="edit" aria-label="Left Align"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>';
+var xButton = '<button type="button" class="x" aria-label="Left Align"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>'
 
 function editClick (evt) {
   console.log('edit button clicked')

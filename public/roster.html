@@ -50,7 +50,8 @@
   <script id="posts-template" type="text/template">
   <ul>
     <% posts.forEach(function(post) { %>
-      <li><%= post['message']['message'] + ": " + post.message.roster + editButton + xButton%></li>
+    <% var teams = post.teams %>
+      <li><%= teams.teamName + ": " + teams.roster + editButton + xButton%></li>
     <% }) %>
   </ul>
   </script>

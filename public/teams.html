@@ -49,8 +49,8 @@
   <ul>
 
     <% posts.forEach(function(post) { %>
-      <% var team = post.message %>
-      <li><%= "<a href='/teams/" + team.message + "'>" + team.message + "</a>" + editButton + xButton %> </li>
+    <% var teams = post.teams %>
+      <li><%= teams.teamName + ": " + teams.roster + editButton + xButton%></li>
     <% }) %>
   </ul>
   </script>

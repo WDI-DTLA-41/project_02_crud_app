@@ -10,21 +10,30 @@ router.get('/', function(req, res, next) {
   res.render('index', {title: 'Stuff and more Stuff'});
 });
 
-router.post('/', function(req, res, next) {
-  var logPost = {
-    critter: request.body.critter,
-    header: request.body.header,
-    content: request.body.content
+// Creates
+router.post('/chat', function(req, res, next) {
+  var post = {
+    name: req.body.name,
+    comment: req.body.comment
   };
   mongo.connect(url, function(err, db) {
-    asser.equal(null, err);
-    db.collection('blog').insert(item, function(err, db) {
+    assert.equal(null, err);
+    db.collection('data').insertOne(post, function(err, db) {
       assert.equal(null, err);
-      consoe.log('Posted');
-      db.close();
+      console.log('Comment Added');
     });
+    var log = [];
+    var newData = db.collection('data').find()
+    newData.forEach(function(doc) {
+      log.push(doc);
+    }, function() {
+        res.render('index', {posts: log})
+        db.close();
+    })
   });
-  res.redirect('/');
-})
+});
+
+router.post('/')
+
 
 module.exports = router;

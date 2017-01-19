@@ -1,3 +1,8 @@
-.row1 {
-  background-color: green;
+div {
+  height: 50px;
+}
+
+#delete, #edit {
+  color: blue;
+  font-size: 10px;
 }

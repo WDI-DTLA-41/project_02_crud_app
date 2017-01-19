@@ -1,44 +1,34 @@
 <h1>{{title}}</h1>
-<nav class='navbar navbar-inverse navbar-static-top'>
-    <div class='container'>
-        <div class='navBar-header'>
-            <button type='button' class='navbar-toggle-collapsed' data-toggle='collapse' data-target='#navbar-collapseOne' aria-expanded='false'>
-                <span class='toggleNavi'>Toggle</span>
-                <span class='icon-bar'></span>
-                <span class='icon-bar'></span>
-                <span class='icon-bar'></span>
-            </button>
-            <a class='navbar-name' href='#'>Stuff Stuff and More Stuff</a>
-        </div>
-        <div class='collapse navBar' id='#navbar-collapseOne'>
-            <ul class='nav navbar-right'>
-                <li><a href='#'>Home</a></li>
-                <li class='dropdown'>
-                    <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Posts<span class='posts'></span></a>
-                    <ul class='dropdown-menu'>
-                        <li><a href='#'>Top</a></li>
-                        <li><a href='#'>New</a></li>
-                        <li><a href='#'>All</a></li>
-                    </ul>
-                </li>
-                <li><a href='#'>About</a></li>
-            </ul>
+
+<nav class='nav nav-pills navbar-inverse'>
+    <li role='presentation'><a href='/'>Home</a></li>
+    <li role='presentation'><a href='/data'>Posts</a></li>
+    <li role='presentation'><a href='/about'>About</a></li>
+</nav>
+<div class='panel panel-default' 'col-md-7'>
+    <div class='panel-heading'>The Room Stuff</div>
+<div class='row'>
+    <div class='col-md-6' style='height:300px;'>
+        <div class='body'>
+        {{#each posts}}
+            <p>{{this.name}} : {{this.comment}}</p>
+            <button id='edit' name='Edit'>Edit</button>
+            <button id='delete' name='Delete'>Delete</button>
+        {{/each}}
         </div>
     </div>
-</nav>
+</div>
 
-<nav class='nav'>
-    <div class='container'>
-    <div class='col-md-3' id='#'>Home</div>
-    <div class='col-md-3' id='#'>Posts</div>
-    <div class='col-md-3' id='#'>About</div>
-    <div class='col-md-3' id='#'>Contact</div>
+<div class='row'>
+    <div class='col-lg-3'>
+        <form method='POST' action='/chat'>
+                <div class='input'>
+                    <input type='text' id='name' name='name' placeholder='Name..'>
+                </div>
+                <div class='input'>
+                    <input type='text' id='comment' name='comment' placeholder='Comment..'>
+                </div>
+                <button type='submit'>Submit</button>
+        </form>
     </div>
-</nav>
-
-<section>
-    <form method='POST' action='/posts'>
-        <input type='text' id='inputPost'>
-        <button id='blogPost'>Submit</button>
-    </form>
-</section>
+</div>

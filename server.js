@@ -91,37 +91,36 @@ app.get('/schedule', function(req, res) {
   });
 });
 
-app.get('/teams/:teamName', function(req, res) {
+app.get('/teams/:name', function(req, res) {
+  var name = req.params.name;
+  var html;
 
-  res.send(req.params.teamName)
+  var findDocuments = function(db, callback) {
+    var collection = db.collection('posts');
+    collection.find({'name': name}).toArray(function(err, docs) {
+      assert.equal(err, null);
+      console.log("found the following, ", docs)
+      html = docs;
+      callback(docs);
+    });
+  }
 
-  // mongo.connect(url, function(err, db) {
-  //   var name = req.params.teamName;
-  //   var html;
+  mongo.connect(url, function(err, db) {
+    assert.equal(err, null);
 
-  //   var findDocuments = function(db, callback) {
-  //     var collection = db.collection('posts');
-  //     collection.find({teams: teamName}).toArray(function(err, docs) {
-  //       assert.equal(err, null);
-  //       console.log(name)
-  //       console.log("found the following, ", docs)
-  //       html = docs[0].message;
-  //       callback(docs);
-  //     });
-  //   }
-  //   findDocuments(db, function() {
-  //     db.close();
-  //     res.send(html + " <a href='/schedule'>Schedule</a>");
-  //   })
-  // })
+    findDocuments(db, function() {
+      db.close();
+      res.send(html)
+    })
+  })
   })
 
 // POST /posts
 app.post('/posts', function(req, res) {
   console.log(req.body);
   var post = {
-    name: req.body.teams.teamName,
-    roster: req.body.teams.roster
+    name: req.body.name,
+    roster: req.body.roster
   };
 
   mongo.connect(url, function(err, db) {
@@ -145,7 +144,7 @@ app.post('/posts/delete', function(req, res) {
   }
 
   mongo.connect(url, function(err, db) {
-    assert.equal(null, err);
+    assert.equal(err, null);
     console.log("Success, trying post delete request");
     removeDocument(db,function() {
       //res.render('index', {data: teams})

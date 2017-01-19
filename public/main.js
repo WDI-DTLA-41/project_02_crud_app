@@ -18,11 +18,11 @@ $('#createPost').on('click', function(evt) {
   var roster = $('#roster');
   var button = "<button>X</button>"
   var obj = {};
-  obj.teamName = teamName.val();
+  obj.name = teamName.val();
   obj.roster = roster.val();
   if(teamName.val() === '' || roster.val() === '') return;
   else {
-    $.post('/posts', {teams: obj}, function(res) {
+    $.post('/posts', obj, function(res) {
       $('#teamslist').append('<li class="list">' + teamName.val() + ": " + roster.val() + editButton + xButton +  '</li>');
       document.querySelector('#teamName').value = "";
       document.querySelector('#roster').value = "";
@@ -67,9 +67,8 @@ function xClick (evt) {
   var teamName = team.split(':')[0];
   console.log(team)
   console.log(teamName);
-  var obj = {
-    name: teamName
-  }
+  var obj = {};
+  obj.name = teamName;
 
   $.post('/posts/delete', obj, function(res) {
     console.log('deleting stuff')

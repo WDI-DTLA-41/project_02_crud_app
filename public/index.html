@@ -32,26 +32,26 @@
   </form>
   <button id="createPost">Add Team</button>
 
+  <div class="dynamicContent">
+    <div id="posts">
 
-  <div id="posts">
+      <script id="posts-template" type="text/template">
+      <ul id="teamslist">
+        <% var editButton = '<button type="button" class="edit" aria-label="Left Align"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>'%>
+        <% var xButton = '<button type="button" class="x" aria-label="Left Align"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>' %>
+        <% var html; %>
+        <% posts.forEach(function(post) { %>
+            <% html ='<li class="list">' + post.name + ": " + post.roster + editButton + xButton + '</li>' %>
+          <%= html %>
+        <% }) %>
+      </ul>
+      </script>
+    </div>
 
-    <script id="posts-template" type="text/template">
-    <ul id="teamslist">
-      <% var editButton = '<button type="button" class="edit" aria-label="Left Align"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>'%>
-      <% var xButton = '<button type="button" class="x" aria-label="Left Align"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>' %>
-      <% var html; %>
-      <% posts.forEach(function(post) { %>
-      <% var teams = post.teams %>
-      <% html ='<li class="list">' + teams.teamName + ": " + teams.roster + editButton + xButton + '</li>' %>
-        <%= html %>
-      <% }) %>
-    </ul>
-    </script>
-  </div>
-
- <p>Enter your teams name (for example 16s Bringas) if it doesn't already exist.
-  If it does, click on it to manage your team's schedule, roster and results
-  page.</p>
+   <p>Enter your teams name (for example 16s Bringas) if it doesn't already exist.
+    If it does, click on it to manage your team's schedule, roster and results
+    page.</p>
+    </div>
 
   <script src ="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="main.js"></script>

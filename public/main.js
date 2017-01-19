@@ -16,8 +16,6 @@ $('#createPost').on('click', function(evt) {
 
 });
 
-
-
 var editButton = '<button type="button" class="edit" aria-label="Left Align"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>';
 var xButton = '<button type="button" class="x" aria-label="Left Align"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>'
 
@@ -31,33 +29,23 @@ function xClick (evt) {
   var target = this;
   var team = target.parentElement.textContent;
   var teamName = team.split(':')[0];
-  console.log(teamName, 'deleted');
+  console.log(team)
+  console.log(teamName);
+  var obj = {
+    name: teamName
+  }
+
+  $.post('/posts/delete', obj, function(res) {
+    console.log('deleting stuff')
+  })
+
   this.parentNode.remove()
-  // debugger;
-  // $.post('/posts/delete', function(res) {
-  //   team = "dead"
-  // })
+
 }
 
 $(document).on('click', '.edit', editClick);
 $(document).on('click', '.x', xClick);
 
-// $('.edit').click(
-
-//   function (event) {
-//   console.log('edit button clicked')
-// });
-
-$('.x').click(function(event) {
-  console.log('x has been clicked')
-});
-
-// function handleClick(evt) {
-//   var edit = document.querySelector('button');
-//   if (evt.target === edit) console.log('edit clicked');
-// }
-// var body = document.querySelector('body');
-// body.addEventListener('clicked', handleClick);
 
 $.get('/posts', function(res) {
   var template = $('#posts-template').html() ;

@@ -117,8 +117,10 @@ app.get('/teams/:teamName', function(req, res) {
 
 // POST /posts
 app.post('/posts', function(req, res) {
+  console.log(req.body);
   var post = {
-    teams: req.body.teams
+    name: req.body.teams.teamName,
+    roster: req.body.teams.roster
   };
 
   mongo.connect(url, function(err, db) {
@@ -128,6 +130,29 @@ app.post('/posts', function(req, res) {
     });
   })
 });
+
+app.post('/posts/delete', function(req, res) {
+  console.log(req.body)
+  var query = req.body.name
+  function removeDocument (db, callback) {
+  db.collection('posts').deleteOne({'name': query}, function(err, result) {
+  assert.equal(err, null);
+    // assert.equal(1, result.result.n)
+    console.log("Removed team", query);
+    callback(result)
+    })
+  }
+
+  mongo.connect(url, function(err, db) {
+    assert.equal(null, err);
+    console.log("Success, trying post delete request");
+    removeDocument(db,function() {
+      //res.render('index', {data: teams})
+    db.close();
+    });
+  })
+});
+
 
 // //FIND AND UPDATE WIP
 // app.post('/posts', function(req, res) {

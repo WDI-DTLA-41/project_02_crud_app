@@ -3,6 +3,6 @@ div {
 }
 
 #delete, #edit {
-  color: blue;
-  font-size: 10px;
+  /*color: blue;*/
+  font-size: 12px;
 }

@@ -1,1 +1,25 @@
-posts.hbs
+<h1 style='text-align:center;'>{{title}}</h1>
+
+<form action='/stff' style='text-align:center;'>
+  <button id='listen' name='listen'>Listen</button>
+</form>
+<br>
+<form action='/' style='text-align:center;'>
+  <button id='leave' name='leave'>Leave</button>
+</form>
+
+<div>
+{{#each posts}}
+  <p class='origPost'><span style='font-weight:bold; font-size: 20px;'>{{this.name}}</span> : {{this.comment}}</p>
+  {{!-- <form method='post' action='/edit' --}}
+  <form method='POST' action='/posts/{{this._id}}/delete'>
+    <button id='delete' name='delete' value={{this._id}}>Delete</button>
+  </form>
+  <form method='POST' action='/posts/{{this._id}}/change'>
+    <input type='text' id='name' name='name' placeholder={{this.name}}>
+    <input type='text' id='comment' name='comment' placeholder={{this.comment}}>
+    <button id='change' name='change' value={{this._id}}>Change</button>
+  </form>
+  </br>
+{{/each}}
+</div>

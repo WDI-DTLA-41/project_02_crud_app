@@ -2,26 +2,31 @@
 
 <nav class='nav nav-pills navbar-inverse'>
     <li role='presentation'><a href='/'>Home</a></li>
-    <li role='presentation'><a href='/data'>Posts</a></li>
     <li role='presentation'><a href='/about'>About</a></li>
+    <li role='presentation' class='postPage'><a href='/posts'>Posts</a></li>
 </nav>
-<div class='panel panel-default' 'col-md-7'>
-    <div class='panel-heading'>The Room Stuff</div>
-<div class='row'>
-    <div class='col-md-6' style='height:300px;'>
+{{!-- <div class='panel panel-default' 'col-md-5'>
+    <div class='panel-heading'>Whispers from Critters</div> --}}
+{{!-- <div class='row'> --}}
+    {{!-- <div class='col-md-6' style='height:300px;'> --}}
         <div class='body'>
         {{#each posts}}
             <p>{{this.name}} : {{this.comment}}</p>
+            {{!-- <form method='post' action='/edit' --}}
+            {{!-- <form method='POST' action='/posts/{{this._id}}/'>
             <button id='edit' name='Edit'>Edit</button>
-            <button id='delete' name='Delete'>Delete</button>
+            </form>
+            <form method='POST' action='/posts/{{this._id}}/delete'>
+            <button id='delete' name='delete' value={{this._id}}>Delete</button>
+            </form> --}}
         {{/each}}
         </div>
     </div>
 </div>
 
 <div class='row'>
-    <div class='col-lg-3'>
-        <form method='POST' action='/chat'>
+    <div class='col-lg-7' style='text-align:right;'>
+        <form method='POST' action='/insert'>
                 <div class='input'>
                     <input type='text' id='name' name='name' placeholder='Name..'>
                 </div>

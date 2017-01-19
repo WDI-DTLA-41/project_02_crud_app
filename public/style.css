@@ -95,6 +95,40 @@ nav>a {
   border:1px solid grey;
 }
 
+#formMessage {
+  border: 3px solid black;
+  display:inline-block;
+  width:29.65em;
+  margin-top:24.1em;
+  position:fixed;
+}
+
+#formMessage>input {
+  width: 86.3%;
+  display:inline-block;
+  padding:2px;
+  background-color: orange;
+  border-color: darkorange;
+}
+
+#formMessage>button {
+  display: inline-block;
+  width: 12%;
+  background: limegreen;
+  border-color: darkgreen;
+}
+
+#messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+#messages>li {
+  padding: 5px 10px;
+}
+#messages>li:nth-child(odd) {
+  background: #eee;
+}
 
 /*http://orig00.deviantart.net/6229/f/2013/114/8/5/gggggggggg_by_bensuit-d62v1ey.gif*/
 /*http://sdeerwallpaper.com/Cool-Wallpapers/team-valor-backgrounds-Is-Cool-Wallpapers.jpg*/

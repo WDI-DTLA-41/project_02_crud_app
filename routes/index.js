@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
+var http = require('http').Server(express);
+var io = require('socket.io')(http);
 var assert = require('assert');
 
 var url = process.env.MONGODB_URI|| 'mongodb://localhost:27017/chatRoom';
@@ -95,6 +97,10 @@ router.post('/memLogin', function(req, resp, next){
           );
 
     });
+});
+
+io.on('connection', function(socket){
+  console.log('a user connected');
 });
 
 router.get('/chatRooms/politics',function(req, resp, next){

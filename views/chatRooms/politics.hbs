@@ -1,0 +1,38 @@
+<header>
+    <h1>{{ title }}</h1>
+    <form action="/login" method="GET">
+        <button>Log In</button>
+    </form>
+    <form action="/signup" method="GET">
+        <button>Sign Up</button>
+    </form>
+</header>
+{{# each memberUse }}
+    <div id="userId">
+        <h5>{{ this.fullName }}</h5>
+        <h5>{{this._id}}</h5>
+        <h5>{{this.userName}}</h5>
+    </div>
+<nav>
+    <a href="/">HOME</a>
+    <a href="#">HOW TO</a>
+    <a href="#">ABOUT ME</a>
+    <a href="#">CONTACT ME</a>
+</nav>
+
+<hr>
+<h3 id="allChat">All Chat Rooms</h3>
+<ul id="chatLodges">
+    <li><h5><a href="/chatRooms/politics?userId={{this._id}}">Politics</a></h5></li>
+    <li><h5><a href="/chatRooms/religion?userId={{this._id}}">Religion</a></h5></li>
+    <li><h5><a href="/chatRooms/sports?userId={{this._id}}">Sports</a></h5></li>
+    <li><h5><a href="/chatRooms/technology?userId={{this._id}}">Technology</a></h5></li>
+    <li><h5><a href="/chatRooms/consoleGaming?userId={{this._id}}">Console Gaming</a></h5></li>
+    <li><h5><a href="/chatRooms/trollnWarRoom?userId={{this._id}}">Troll and War Room</a></h5></li>
+    <li><h5><a href="/chatRooms/dailyQuery?userId={{this._id}}">Daily Query</a></h5></li>
+    <li><h5><a href="/chatRooms/randomChat?userId={{this._id}}">Random Chat</a></h5></li>
+</ul>
+{{/each}}
+<section class="chatBox">
+    <div id="chatTitle"><h5>{{ cTitle }}</h5></div>
+</section>

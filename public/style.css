@@ -41,6 +41,7 @@ nav>a {
   margin-top:5em;
   margin:0 auto;
   display:block;
+  overflow: auto;
 }
 
 .chatBox>#chatTitle {

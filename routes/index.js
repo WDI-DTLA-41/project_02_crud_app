@@ -2,13 +2,14 @@ var express = require('express');
 var router = express.Router();
 var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
-var http = require('http').Server(express);
-var io = require('socket.io')(http);
+// var http = require('http').Server(router);
 var assert = require('assert');
+// var io = require('socket.io')(http);
+
 
 var url = process.env.MONGODB_URI|| 'mongodb://localhost:27017/chatRoom';
 var title = { title: 'FenixChat.com'};
-var chatTitle = ['Politics', 'Religion', 'Sports', 'Technology', 'Console Gaming', 'trollnWarRoom', 'Daily Query'];
+var chatTitle = ['politics', 'religion', 'sports', 'technology', 'consoleGaming', 'trollnWarRoom', 'dailyQuery'];
 
 // Home Page
 router.get('/', function(req, resp, next) {
@@ -45,34 +46,147 @@ router.get('/signup', function(req, resp, next){
     });
 });
 
-router.post('/createProfile', function(req, resp, next){
-  var fullName = req.body.firstName + ' ' + req.body.midInit + '. ' + req.body.lastName;
-  var memberInfo = {
-    firstName: req.body.firstName,
-    midInit: req.body.midInit,
-    lastName: req.body.lastName,
-    fullName: fullName,
-    userName: req.body.userName,
-    password: req.body.password,
-    email: req.body.emailAddress
-  }
-
-  mongo.connect(url, function(err, db){
-    assert.equal(null, err);
-    db.collection('members').insertOne(memberInfo, function(err, result){
-      assert.equal(null, err);
-      console.log('Item inserted ' + result);
-      db.close();
-    });
-  });
-  resp.render('login', title);
-});
-
 router.get('/login', function(req, resp, next){
   resp.render('login', title);
 });
 
 // READ Data
+
+// io.on('connection', function(client){
+//   socket.on('chat message', function(msg){
+//     io.emit('chat message', msg);
+//   });
+// });
+
+router.get('/politics',function(req, resp, next){
+    var result = [];
+    var resForum = [];
+    mongo.connect(url, function(err, db){
+      assert.equal(null, err);
+      var dbOutPut = db.collection('members').find({_id: objectId(req.query.userId)});
+      var forum = db.collection('pubChatForums').find({'Public': []});
+      forum.forEach(function(com, err){
+          resForum.push(com);
+          //console.log(resforum);
+      }, function(){
+        console.log('Hello I am: ' + resForum[0]);
+      });
+          dbOutPut.forEach(function(ind, err){
+            assert.equal(null, err);
+            result.push(ind);
+            },function(){
+                db.close();
+                resp.render('chatRooms/politics', {memberUse: result, Forum: resForum,title: 'FenixChat.com'});
+              }
+          );
+    });
+});
+
+router.get('/religion',function(req, resp, next){
+    var result = [];
+    mongo.connect(url, function(err, db){
+      assert.equal(null, err);
+      var dbOutPut = db.collection('members').find({_id: objectId(req.query.userId)});
+          dbOutPut.forEach(function(ind, err){
+            assert.equal(null, err);
+            result.push(ind);
+            },function(){
+                db.close();
+                resp.render('chatRooms/religion', {memberUse: result, title: 'FenixChat.com'});
+              }
+          );
+    });
+});
+
+router.get('/sports',function(req, resp, next){
+    var result = [];
+    mongo.connect(url, function(err, db){
+      assert.equal(null, err);
+      var dbOutPut = db.collection('members').find({_id: objectId(req.query.userId)});
+          dbOutPut.forEach(function(ind, err){
+            assert.equal(null, err);
+            result.push(ind);
+            },function(){
+                db.close();
+                resp.render('chatRooms/sports', {memberUse: result, title: 'FenixChat.com'});
+              }
+          );
+    });
+});
+
+router.get('/technology',function(req, resp, next){
+    var result = [];
+    mongo.connect(url, function(err, db){
+      assert.equal(null, err);
+      var dbOutPut = db.collection('members').find({_id: objectId(req.query.userId)});
+          dbOutPut.forEach(function(ind, err){
+            assert.equal(null, err);
+            result.push(ind);
+            },function(){
+                db.close();
+                resp.render('chatRooms/technology', {memberUse: result, title: 'FenixChat.com'});
+              }
+          );
+    });
+});
+
+router.get('/consoleGaming',function(req, resp, next){
+    var result = [];
+    mongo.connect(url, function(err, db){
+      assert.equal(null, err);
+      var dbOutPut = db.collection('members').find({_id: objectId(req.query.userId)});
+          dbOutPut.forEach(function(ind, err){
+            assert.equal(null, err);
+            result.push(ind);
+            },function(){
+                db.close();
+                resp.render('chatRooms/consoleGaming', {memberUse: result, title: 'FenixChat.com'});
+              }
+          );
+    });
+});
+
+router.get('/trollnWarRoom',function(req, resp, next){
+    var result = [];
+    mongo.connect(url, function(err, db){
+      assert.equal(null, err);
+      var dbOutPut = db.collection('members').find({_id: objectId(req.query.userId)});
+          dbOutPut.forEach(function(ind, err){
+            assert.equal(null, err);
+            result.push(ind);
+            },function(){
+                db.close();
+                resp.render('chatRooms/trollnWarRoom', {memberUse: result, title: 'FenixChat.com'});
+              }
+          );
+    });
+});
+
+router.get('/dailyQuery',function(req, resp, next){
+    var result = [];
+    mongo.connect(url, function(err, db){
+      assert.equal(null, err);
+      var dbOutPut = db.collection('members').find({_id: objectId(req.query.userId)});
+          dbOutPut.forEach(function(ind, err){
+            assert.equal(null, err);
+            result.push(ind);
+            },function(){
+                db.close();
+                resp.render('chatRooms/dailyQuery', {memberUse: result, title: 'FenixChat.com'});
+              }
+          );
+    });
+});
+
+router.get('/randomChat',function(req, resp, next){
+    var result = [];
+    var num = Math.floor(Math.random() * 7);
+    console.log(chatTitle[num]);
+    console.log(req.query);
+    resp.redirect('/' + chatTitle[num] + '?userId=' + req.query.userId);
+});
+
+// UPDATE Data
 router.post('/memLogin', function(req, resp, next){
     var result = [];
     mongo.connect(url, function(err, db){
@@ -99,139 +213,105 @@ router.post('/memLogin', function(req, resp, next){
     });
 });
 
-io.on('connection', function(socket){
-  console.log('a user connected');
+router.post('/createProfile', function(req, resp, next){
+  var fullName = req.body.firstName + ' ' + req.body.midInit + '. ' + req.body.lastName;
+  var memberInfo = {
+    firstName: req.body.firstName,
+    midInit: req.body.midInit,
+    lastName: req.body.lastName,
+    fullName: fullName,
+    userName: req.body.userName,
+    password: req.body.password,
+    email: req.body.emailAddress
+  }
+
+  mongo.connect(url, function(err, db){
+    assert.equal(null, err);
+    db.collection('members').insertOne(memberInfo, function(err, result){
+      assert.equal(null, err);
+      console.log('Item inserted ' + result);
+      db.close();
+    });
+  });
+  resp.render('login', title);
 });
 
-router.get('/chatRooms/politics',function(req, resp, next){
+router.post('/politics/:userId',function(req, resp, next){
     var result = [];
+
     mongo.connect(url, function(err, db){
       assert.equal(null, err);
-      var dbOutPut = db.collection('members').find({_id: objectId(req.query.userId)});
-          dbOutPut.forEach(function(ind, err){
-            assert.equal(null, err);
-            result.push(ind);
-            },function(){
-                db.close();
-                resp.render('chatRooms/politics', {memberUse: result, title: 'FenixChat.com', cTitle: chatTitle[0]});
-              }
-          );
+      // db.collection('pubChatForums').update({chatNum:0}, {$push: {Public: req.body.instMess}});
+      db.close();
+      resp.redirect('/politics?' + req.params.userId);
     });
 });
 
-router.get('/chatRooms/religion',function(req, resp, next){
+router.post('/religion/:userId',function(req, resp, next){
     var result = [];
+
     mongo.connect(url, function(err, db){
       assert.equal(null, err);
-      var dbOutPut = db.collection('members').find({_id: objectId(req.query.userId)});
-          dbOutPut.forEach(function(ind, err){
-            assert.equal(null, err);
-            result.push(ind);
-            },function(){
-                db.close();
-                resp.render('chatRooms/religion', {memberUse: result, title: 'FenixChat.com', cTitle: chatTitle[1]});
-              }
-          );
+      // db.collection('pubChatForums').update({chatNum:1}, {$push: {Public: req.body.instMess}});
+      db.close();
+      resp.redirect('/religion?' + req.params.userId);
     });
 });
 
-router.get('/chatRooms/sports',function(req, resp, next){
+router.post('/sports/:userId',function(req, resp, next){
     var result = [];
+
     mongo.connect(url, function(err, db){
       assert.equal(null, err);
-      var dbOutPut = db.collection('members').find({_id: objectId(req.query.userId)});
-          dbOutPut.forEach(function(ind, err){
-            assert.equal(null, err);
-            result.push(ind);
-            },function(){
-                db.close();
-                resp.render('chatRooms/sports', {memberUse: result, title: 'FenixChat.com', cTitle: chatTitle[2]});
-              }
-          );
+      // db.collection('pubChatForums').update({chatNum:2}, {$push: {Public: req.body.instMess}});
+      db.close();
+      resp.redirect('/sports?' + req.params.userId);
     });
 });
 
-router.get('/chatRooms/technology',function(req, resp, next){
+router.post('/technology/:userId',function(req, resp, next){
     var result = [];
+
     mongo.connect(url, function(err, db){
       assert.equal(null, err);
-      var dbOutPut = db.collection('members').find({_id: objectId(req.query.userId)});
-          dbOutPut.forEach(function(ind, err){
-            assert.equal(null, err);
-            result.push(ind);
-            },function(){
-                db.close();
-                resp.render('chatRooms/technology', {memberUse: result, title: 'FenixChat.com', cTitle: chatTitle[3]});
-              }
-          );
+      // db.collection('pubChatForums').update({chatNum:3}, {$push: {Public: req.body.instMess}});
+      db.close();
+      resp.redirect('/technology?' + req.params.userId);
     });
 });
 
-router.get('/chatRooms/consoleGaming',function(req, resp, next){
+router.post('/consoleGaming/:userId',function(req, resp, next){
     var result = [];
+
     mongo.connect(url, function(err, db){
       assert.equal(null, err);
-      var dbOutPut = db.collection('members').find({_id: objectId(req.query.userId)});
-          dbOutPut.forEach(function(ind, err){
-            assert.equal(null, err);
-            result.push(ind);
-            },function(){
-                db.close();
-                resp.render('chatRooms/consoleGaming', {memberUse: result, title: 'FenixChat.com', cTitle: chatTitle[4]});
-              }
-          );
+      // db.collection('pubChatForums').update({chatNum:4}, {$push: {Public: req.body.instMess}});
+      db.close();
+      resp.redirect('/consoleGaming?' + req.params.userId);
     });
 });
 
-router.get('/chatRooms/trollnWarRoom',function(req, resp, next){
+router.post('/trollnWarRoom/:userId',function(req, resp, next){
     var result = [];
+
     mongo.connect(url, function(err, db){
       assert.equal(null, err);
-      var dbOutPut = db.collection('members').find({_id: objectId(req.query.userId)});
-          dbOutPut.forEach(function(ind, err){
-            assert.equal(null, err);
-            result.push(ind);
-            },function(){
-                db.close();
-                resp.render('chatRooms/trollnWarRoom', {memberUse: result, title: 'FenixChat.com', cTitle: chatTitle[5]});
-              }
-          );
+      // db.collection('pubChatForums').update({chatNum:5}, {$push: {Public: req.body.instMess}});
+      db.close();
+      resp.redirect('/trollnWarRoom?' + req.params.userId);
     });
 });
 
-router.get('/chatRooms/dailyQuery',function(req, resp, next){
+router.post('/dailyQuery/:userId',function(req, resp, next){
     var result = [];
-    mongo.connect(url, function(err, db){
-      assert.equal(null, err);
-      var dbOutPut = db.collection('members').find({_id: objectId(req.query.userId)});
-          dbOutPut.forEach(function(ind, err){
-            assert.equal(null, err);
-            result.push(ind);
-            },function(){
-                db.close();
-                resp.render('chatRooms/dailyQuery', {memberUse: result, title: 'FenixChat.com', cTitle: chatTitle[6]});
-              }
-          );
-    });
-});
 
-router.get('/chatRooms/randomChat',function(req, resp, next){
-    var result = [];
-    var num = Math.floor(Math.random() * 7);
     mongo.connect(url, function(err, db){
       assert.equal(null, err);
-      var dbOutPut = db.collection('members').find({_id: objectId(req.query.userId)});
-          dbOutPut.forEach(function(ind, err){
-            assert.equal(null, err);
-            result.push(ind);
-            },function(){
-                db.close();
-                resp.render('chatRooms/randomChat', {memberUse: result, title: 'FenixChat.com', cTitle: chatTitle[num]});
-              }
-          );
+      // db.collection('pubChatForums').update({chatNum:6}, {$push: {Public: req.body.instMess}});
+      db.close();
+      resp.redirect('/politics?' + req.params.userId);
     });
 });
-// UPDATE Data
 
 // DELETE Data
 

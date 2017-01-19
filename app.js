@@ -8,6 +8,9 @@ var hbs = require('express-handlebars');
 var routes = require('./routes/index');
 
 var app = express();
+// var http = require('http').Server(app);
+// var io = require('socket.io')(http);
+
 
 app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'main', layoutsDir: __dirname + '/views/layouts/'}));
 app.set('views', path.join(__dirname, 'views'));
@@ -18,8 +21,11 @@ app.use(favicon(__dirname + '/public/favicon3.ico'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 
+// io.on('connection', function(client){
+//  console.log('a user connected');
+// });
 
 app.use('/', routes);
 
@@ -28,4 +34,4 @@ app.listen(port, function(){
   console.log("Up and Running! on port: " + port);
 });
 
-// module.exports = app;
+ module.exports = app;

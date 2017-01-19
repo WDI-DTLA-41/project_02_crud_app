@@ -38,10 +38,10 @@ function editPost (evt) {
   var editName = form.children[0].value;
   var editRoster = form.children[1].value;
   var obj = {};
-  obj.Name = editName;
+  obj.name = editName;
   obj.roster = editRoster;
   li.innerHTML = editName + ": " + editRoster + editButton + xButton;
-  $.post('/posts/edit', {teams: obj}, function(res) {
+  $.post('/posts/edit', obj, function(res) {
     console.log('going to posts/edit!')
   })
 }

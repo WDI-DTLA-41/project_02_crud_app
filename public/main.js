@@ -18,11 +18,15 @@ $('#createPost').on('click', function(evt) {
 
 var editButton = '<button type="button" class="edit" aria-label="Left Align"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>';
 var xButton = '<button type="button" class="x" aria-label="Left Align"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>'
+var teamInput = '<input type="text" placeholder="Enter Team (12s, 14s)" id="teamName">'
+var submit = '<button id="createPost">Add Team</button>'
 
 function editClick (evt) {
 var target = this;
 var team = target.parentElement.textContent;
-console.log(team)
+console.log('clicked edit, saving', team)
+this.parentNode.innerHTML = teamInput + submit;
+debugger;
 }
 
 function xClick (evt) {

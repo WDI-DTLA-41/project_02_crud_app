@@ -10,8 +10,12 @@ a {
 button {
   margin: 2px;
   display: inline
+  color: black;
 }
 
+span {
+  color: rgba(255,127,102,1)
+}
 body {
   background: rgba(208, 228, 242, 1);
   padding-left: 20px;
@@ -33,6 +37,7 @@ form {
 #teamslist {
   margin: 5px;
   padding: 10px, 5px, 10px, 5px;
-  background: white;
+  background: rgba(255, 246, 229, .8);
+  color: rgba(62,69,76, 1);
   border-radius: 5px;
 }

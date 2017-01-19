@@ -36,14 +36,22 @@ function editPost (evt) {
   var form = this.previousElementSibling;
   var li = this.parentElement;
   var editName = form.children[0].value;
+  var changeName = editName;
   var editRoster = form.children[1].value;
   var obj = {};
   obj.name = editName;
   obj.roster = editRoster;
   li.innerHTML = editName + ": " + editRoster + editButton + xButton;
-  $.post('/posts/edit', obj, function(res) {
-    console.log('going to posts/edit!')
-  })
+debugger;
+  if (changeName !== editName) {
+      console.log('Team name was changed, creating new post')
+    $.post('/posts', obj, function(res) {
+    })
+  } else {
+      console.log('going to posts/edit!');
+    $.post('/posts/edit', obj, function(res) {
+    });
+  }
 }
 
 

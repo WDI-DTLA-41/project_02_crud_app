@@ -9,6 +9,7 @@ a {
 
 button {
   margin: 2px;
+  display: inline
 }
 
 body {
@@ -17,4 +18,9 @@ body {
 
 table {
   background: lightgray;
+}
+
+form {
+  display: inline;
+  margin: 2px;
 }

@@ -5,6 +5,7 @@ var url = process.env.MONGODB_URI || 'mongodb://localhost:27017/sandbox';
 var assert = require('assert');
 var app = express();
 var morgan = require('morgan');
+var handlebars = require('handlebars');
 
 // Middleware
 app.use(express.static(__dirname + '/public'));

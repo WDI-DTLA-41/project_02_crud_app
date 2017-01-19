@@ -34,9 +34,11 @@
 </ul>
 {{/each}}
 <section class="chatBox">
-    <div id="chatTitle"><h5>{{ cTitle }}</h5></div>
+    <div id="chatTitle"><h5>Sports</h5></div>
     <ul id="messages"></ul>
-    <form action="" id="formMessage">
-      <input id="m" autocomplete="off"><button>Send</button>
+    {{# each memberUse }}
+    <form action="/chatRooms/sports/userId={{this._id}}" method="post" id="formMessage">
+      <input id="m" autocomplete="off" name="instMess"><button>Send</button>
     </form>
 </section>
+{{/each}}

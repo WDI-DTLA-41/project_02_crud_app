@@ -7,13 +7,18 @@
     <link rel="stylesheet" href="/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.1.1.js"
       integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
       crossorigin="anonymous"></script>
-    <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
+      $('#formMessage').submit(function(){
+        socket.emit('chat message', $('#formMessage>input').val());
+        $('#formMessage>input').val('');
+        return false;
+      });
     </script>
 </head>
 <body>

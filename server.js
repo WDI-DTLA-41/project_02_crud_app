@@ -133,8 +133,8 @@ app.post('/posts', function(req, res) {
 });
 
 app.post('/posts/delete', function(req, res) {
-  console.log(req.body)
-  var query = req.body.name
+  console.log(req.body);
+  var query = req.body.name;
   function removeDocument (db, callback) {
   db.collection('posts').deleteOne({'name': query}, function(err, result) {
   assert.equal(err, null);
@@ -154,19 +154,29 @@ app.post('/posts/delete', function(req, res) {
   })
 });
 
+app.post('/posts/edit', function (req, res) {
+  console.log('about to edit...')
+  console.log('req.body: ', req.body)
+  var name = req.body.name;
+  var roster = req.body.roster;
+  function updateDocument (db, callback) {
+    db.collection('posts').updateOne({'name': name}, { $set: {'roster': roster} }, function(err, result) {
+      assert.equal(err, null);
+      assert.equal(1, result.result.n)
+      callback(result);
+    });
+  }
 
-// //FIND AND UPDATE WIP
-// app.post('/posts', function(req, res) {
-//   var post = {
-//     message: req.body.message
-//   };
-//   mongo.connect(url, function(err, db) {
-//     db.collection('posts').insertOne(post, function(err, result) {
-//       db.close();
-//       res.json(result);
-//     });
-//   })
-// });
+  mongo.connect(url, function(err, db) {
+    assert.equal(null, err);
+    console.log('Server open, now editing...');
+    updateDocument(db, function() {
+      console.log('all done closing server!')
+      db.close();
+    })
+  })
+
+})
 
 //Run Server
 

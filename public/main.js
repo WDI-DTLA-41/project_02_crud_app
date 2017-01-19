@@ -12,18 +12,18 @@ var xButton = '<button type="button" class="x" aria-label="Left Align"><span cla
 //when the add team info button is clicked, the data from the two input forms is
 //created on db and appended to page
 
-  var obj = {};
 
 $('#createPost').on('click', function(evt) {
   var teamName = $('#teamName');
   var roster = $('#roster');
   var button = "<button>X</button>"
+  var obj = {};
   obj.teamName = teamName.val();
   obj.roster = roster.val();
   if(teamName.val() === '' || roster.val() === '') return;
   else {
     $.post('/posts', {teams: obj}, function(res) {
-      $('#teamslist').append('<li class="list">' + teamName.val() + " " + roster.val() + editButton + xButton +  '</li>');
+      $('#teamslist').append('<li class="list">' + teamName.val() + ": " + roster.val() + editButton + xButton +  '</li>');
       document.querySelector('#teamName').value = "";
       document.querySelector('#roster').value = "";
     });
@@ -35,14 +35,15 @@ function editPost (evt) {
   var btn = this;
   var form = this.previousElementSibling;
   var li = this.parentElement;
-  var editTeamName = form.children[0].value;
+  var editName = form.children[0].value;
   var editRoster = form.children[1].value;
-  obj.teamName = editTeamName;
+  var obj = {};
+  obj.Name = editName;
   obj.roster = editRoster;
-  debugger;
-    $.post('/posts', {teams: obj}, function(res) {
-      li.innerHTML = '<li>' + editTeamName + ": " + editRoster + '</li>' + editButton + xButton;
-    })
+  li.innerHTML = editName + ": " + editRoster + editButton + xButton;
+  $.post('/posts/edit', {teams: obj}, function(res) {
+    console.log('going to posts/edit!')
+  })
 }
 
 
@@ -55,8 +56,8 @@ function editClick (evt) {
   roster = team.split(':')[1];
   teamName = team.split(':')[0];
   console.log('clicked edit, saving', team)
-  this.parentNode.innerHTML = '<form><input type="text" placeholder="Edit Team (12s, 14s)" id="editTeamName">' + ' ' + '<input type="text" placeholder="Edit Roster" id="editRoster"></form>' + ' ' + '<button id="editPost">Edit Team Info</button>';
-  document.querySelector('#editTeamName').value = teamName;
+  this.parentNode.innerHTML = '<form><input type="text" placeholder="Edit Team (12s, 14s)" id="editName">' + ' ' + '<input type="text" placeholder="Edit Roster" id="editRoster"></form>' + ' ' + '<button id="editPost">Edit Team Info</button>';
+  document.querySelector('#editName').value = teamName;
   document.querySelector('#editRoster').value = roster;
 }
 

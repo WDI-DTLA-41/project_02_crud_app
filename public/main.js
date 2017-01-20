@@ -118,7 +118,7 @@ $(document).on('click', '.edit', editClick);
 $(document).on('click', '.x', xClick);
 $(document).on('click', '#editPost', editPost);
 
-
+//AJAX REQUESTS
 $.get('/posts', function(res) {
   var template = $('#posts-template').html() ;
   var compiled = _.template(template);

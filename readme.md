@@ -1,59 +1,55 @@
-Your repo MUST
-- Include wireframes that you designed during the planning process
-- Include user stories
+Read Me For My Second Project
 
-Necessary Deliverables
 
-- A working full-stack application, built by you, hosted somewhere on the internet
-- A link to your hosted working app in the URL section of your Github repo
-- A git repository hosted on Github, with a link to your hosted project, and frequent commits dating back to the very beginning of the project. Commit early, commit often.
-- A readme.md file with explanations of the technologies used, the approach taken, installation instructions, unsolved problems, etc.
-- Wireframes of your app, hosted somewhere & linked in your readme
-- A link in your readme.md to the publically-accessible user stories you created
 
-Suggested Ways to Get Started
 
-- Plan
-- Write User stories
 
-> User stories define what a specific type of user wants to accomplish with your application. 
-> It's tempting to just make them todo lists for what needs to get done, 
-> but if you keep them small & focused on what a user cares about from their perspective, 
-> it'll help you know what to build!
-
-- Pseudo code
 - Wireframe
-- Write naive code
-- Read the docs
-- Find a tutorial
-- Commit early, commit often.
-- Use git branching to try out ideas
 
-# Potential Project Ideas
+https://wireframepro.mockflow.com/view/wireframeformysecondproject
 
-### Personal Tracker
+- User Story
 
-Build something for yourself that tracks some data!
+user-stories.md
 
-### Cheerups
 
-The world is a depressing place.
 
-Your task is to create an app that will allow people to create and share "cheerups" - 
-happy little quips to brighten other peoples' days. Cheerups will be small - 
-limited to 139 characters. Members will be able to promote Cheerups that they like 
-and maybe even boost the reputation of the Cheerupper.
+- Github
 
-### Bookmarket
 
-You will create an application where users can bookmark links they want to keep.
 
-But what if users could trade bookmarks for other bookmarks? Or sell bookmarks for points? 
-Or send bookmarks to your friends. Or something even crazier.
 
-### FourSquare Clone
+- Heroku
 
-MongoDB is great for location based data like latitude and longitude.
-Allow users to report on their location and find nearby friends.
 
+
+
+- The Get Go Of this Project's Progression
+
+> First idea was to make a Kappa Counter which tracks a word used in a
+  real time chat log but that will be a future project
+
+> Second idea was to make a real time chat room but realized after day1
+  that I should focus on learning db/route/CRUD first
+
+> Third idea(this) is a blog/forum where anyone can create, read, edit,
+  and delete theirs and each other's posts while hiding names
+
+> Used Bootstrap as the CSS framework after looking over a few, don't
+  like it too much so will play with others for future ideas.
+
+> Template wise, used handlebars, pros and cons while learning to
+  implement it but can see why it's great for understanding the value of
+  why templating is important in situations
+
+> Realized over hours and hours that targeting with ._id is most efficient
+  rather than somehow trying to find->sort->remove
+
+> Tried making everything on one page rather than a few and learned how
+  that was a terrible idea as many things overlap and can break
+
+> Theme/Layout kept changing throughout the progression of each button
+
+> I see value in this in a more advanced state with features that include:
+  login/password, comments on posts, '/' display could use more real-time.
 

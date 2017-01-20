@@ -8,21 +8,22 @@
     </form>
 </header>
 <nav>
-    <a href="/">HOME</a>
+    <a href="#">HOME</a>
     <a href="#">HOW TO</a>
     <a href="#">ABOUT ME</a>
     <a href="#">CONTACT ME</a>
 </nav>
-{{# each memberUse }}
-    <div id="userId">
-        <h5>{{ this.fullName }}</h5>
-        <h5>{{this._id}}</h5>
-        <h5>{{this.userName}}</h5>
-    </div>
-{{/each}}
+{{!--     <div id="userId">
+        <h5>{{ memberUse.fullName }}</h5>
+        <h5>{{ memberUse._id }}</h5>
+        <h5>{{ memberUse.userName }}</h5>
+    </div> --}}
 <hr>
-<form action='/memLogin' method='POST'>
+<form action='/memLogin' method='POST' id='logForm'>
   <input type='text' name='userNameEntry' placeholder='Username'>
   <input type='text' name='passWordEntry' placeholder='Password'>
   <button value=userName>Log In</button>
 </form>
+<div id="notice">
+    <h4>{{ notifier }}</h4>
+</div>

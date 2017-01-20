@@ -13,13 +13,11 @@
     <a href="#">ABOUT ME</a>
     <a href="#">CONTACT ME</a>
 </nav>
-{{# each memberUse }}
     <div id="userId">
-        <h5>{{ this.fullName }}</h5>
-        <h5>{{this._id}}</h5>
-        <h5>{{this.userName}}</h5>
+        <h5>{{ memberUse.fullName }}</h5>
+        <h5>{{ memberUse._id }}</h5>
+        <h5>{{ memberUse.userName }}</h5>
     </div>
-{{/each}}
 <hr>
 <form action='/createProfile' method='POST' id="regForm">
   <p>Create User Account</p>

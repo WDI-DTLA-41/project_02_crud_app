@@ -42,6 +42,7 @@ nav>a {
   margin:0 auto;
   display:block;
   overflow: auto;
+
 }
 
 .chatBox>#chatTitle {
@@ -69,6 +70,14 @@ nav>a {
 
 }
 
+#logForm {
+  text-align:center;
+}
+
+#notice {
+  text-align:center;
+}
+
 #allChat {
   text-align:center;
 }
@@ -83,11 +92,65 @@ nav>a {
   display: inline-block;
 }
 
+#profileEdit {
+
+}
+
+#acctEdit {
+  background:white;
+  border:1px solid black;
+  min-width:20em;
+  width:25em;
+  min-height:22em;
+  height:25em;
+  margin:0 auto;
+}
+
+#acctEdit>p {
+  margin-left:35%;
+  text-align:center;
+  text-decoration: underline;
+  display:inline-block;
+}
+
+#acctEdit>#editAll {
+  float: right;
+  padding:1em;
+  font-weight: bold;
+}
+
+#acctEdit>li>h4>form {
+  display:inline-block;
+  float:right;
+  margin-right:.5em;
+}
+
+#acctEdit>li>h4>form>button {
+  border-radius:10px;
+}
+
+#acctEdit>li>h4>a {
+  float:right;
+  padding-right:1em;
+}
+
+#acctEdit>form {
+
+}
+
+#acctEdit>li {
+  list-style-type: none;
+}
+
 #userId {
   display:inline-block;
   vertical-align: top;
   float:right;
   line-height: 0%;
+}
+
+#userId>form {
+  display:inline-block;
 }
 
 #chatForum {
@@ -100,8 +163,9 @@ nav>a {
   border: 3px solid black;
   display:inline-block;
   width:29.65em;
-  margin-top:24.1em;
+  margin-top:22.9em;
   position:fixed;
+  bottom: 3.8em;
 }
 
 #formMessage>input {
@@ -122,10 +186,10 @@ nav>a {
 #messages {
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding: 0 0 40px 0;
 }
 #messages>li {
-  padding: 5px 10px;
+  display: block;
 }
 #messages>li:nth-child(odd) {
   background: #eee;

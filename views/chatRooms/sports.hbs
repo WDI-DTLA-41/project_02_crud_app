@@ -7,14 +7,19 @@
         <button>Sign Up</button>
     </form>
 </header>
-{{# each memberUse }}
     <div id="userId">
-        <h5>{{ this.fullName }}</h5>
-        <h5>{{this._id}}</h5>
-        <h5>{{this.userName}}</h5>
+        <h5>{{ memberUse.fullName }}</h5>
+        <h5>{{ memberUse._id }}</h5>
+        <h5>{{ memberUse.userName }}</h5>
+        <form action="/accountEdit/userId={{ memberUse._id }}" method="post">
+            <button>Account</button>
+        </form>
+        <form action="/signOut" method="GET">
+            <button>Sign Out</button>
+        </form>
     </div>
 <nav>
-    <a href="/">HOME</a>
+    <a href="#">HOME</a>
     <a href="#">HOW TO</a>
     <a href="#">ABOUT ME</a>
     <a href="#">CONTACT ME</a>
@@ -23,22 +28,23 @@
 <hr>
 <h3 id="allChat">All Chat Rooms</h3>
 <ul id="chatLodges">
-    <li><h5><a href="/politics?userId={{this._id}}">Politics</a></h5></li>
-    <li><h5><a href="/religion?userId={{this._id}}">Religion</a></h5></li>
-    <li><h5><a href="/sports?userId={{this._id}}">Sports</a></h5></li>
-    <li><h5><a href="/technology?userId={{this._id}}">Technology</a></h5></li>
-    <li><h5><a href="/consoleGaming?userId={{this._id}}">Console Gaming</a></h5></li>
-    <li><h5><a href="/trollnWarRoom?userId={{this._id}}">Troll and War Room</a></h5></li>
-    <li><h5><a href="/dailyQuery?userId={{this._id}}">Daily Query</a></h5></li>
-    <li><h5><a href="/randomChat?userId={{this._id}}">Random Chat</a></h5></li>
+    <li><h5><a href="/politics?userId={{ memberUse._id }}">Politics</a></h5></li>
+    <li><h5><a href="/religion?userId={{ memberUse._id }}">Religion</a></h5></li>
+    <li><h5><a href="/sports?userId={{ memberUse._id }}">Sports</a></h5></li>
+    <li><h5><a href="/technology?userId={{ memberUse._id }}">Technology</a></h5></li>
+    <li><h5><a href="/consoleGaming?userId={{ memberUse._id }}">Console Gaming</a></h5></li>
+    <li><h5><a href="/trollnWarRoom?userId={{ memberUse._id }}">Troll and War Room</a></h5></li>
+    <li><h5><a href="/dailyQuery?userId={{ memberUse._id }}">Daily Query</a></h5></li>
+    <li><h5><a href="/randomChat?userId={{ memberUse._id }}">Random Chat</a></h5></li>
 </ul>
-{{/each}}
 <section class="chatBox">
     <div id="chatTitle"><h5>Sports</h5></div>
-    <ul id="messages"></ul>
-    {{# each memberUse }}
-    <form action="/sports/userId={{this._id}}" method="post" id="formMessage">
+    <ul id="messages">
+        {{# each Forum}}
+            <li>{{ this.comment }}</li>
+        {{/each}}
+    </ul>
+    <form action="/sports/userId={{ memberUse._id }}" method="post" id="formMessage">
       <input id="m" autocomplete="off" name="instMess"><button>Send</button>
     </form>
 </section>
-{{/each}}

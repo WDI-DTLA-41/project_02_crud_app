@@ -16,16 +16,22 @@ var xButton = '<button type="button" class="x" aria-label="Left Align"><span cla
 $('#createPost').on('click', function(evt) {
   var teamName = $('#teamName');
   var roster = $('#roster');
-  var button = "<button>X</button>"
   var obj = {};
   obj.name = teamName.val();
   obj.roster = roster.val();
   if(teamName.val() === '' || roster.val() === '') return;
   else {
     $.post('/posts', obj, function(res) {
-      $('#teamslist').append('<li class="list">' + teamName.val() + ": " + roster.val() + editButton + xButton +  '</li>');
+      if (res.status === 200) {
+        var makeId = "id:" + res.id;
+        console.log('id: ', res.id);
+      $('#teamslist').append('<li class="list" ' + 'id="' + makeId + '">' + teamName.val() + ": " + roster.val() + editButton + xButton +  '</li>');
       document.querySelector('#teamName').value = "";
       document.querySelector('#roster').value = "";
+      } else {
+        console.log('res status != 200, returning')
+        return;
+      }
     });
   }
 });
@@ -42,19 +48,17 @@ function editPost (evt) {
   obj.name = editName;
   obj.roster = editRoster;
   li.innerHTML = editName + ": " + editRoster + editButton + xButton;
-debugger;
-  if (changeName !== editName) {
-      console.log('Team name was changed, creating new post')
-    $.post('/posts', obj, function(res) {
-    })
-  } else {
+// debugger;
+//   if (changeName !== editName) {
+//       console.log('Team name was changed, creating new post')
+//     $.post('/posts', obj, function(res) {
+//     })
+//   } else {
       console.log('going to posts/edit!');
     $.post('/posts/edit', obj, function(res) {
     });
-  }
+  // }
 }
-
-
 
 
 

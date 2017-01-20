@@ -48,6 +48,7 @@
     <% console.log(posts) %>
     <% posts.forEach(function(post) { %>
       <% var html; %>
+      <% var rosterArr = post.roster.split(',') %>
       <% html ='<tr><td>' + post.roster + '</td><td>' + post.roster + '</td><td>' + post.roster + '</td><tr>'%>
       <%= html %>
     <% }) %>

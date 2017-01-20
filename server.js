@@ -6,6 +6,7 @@ var assert = require('assert');
 var app = express();
 var morgan = require('morgan');
 var handlebars = require('handlebars');
+var objectId = require('mongodb').ObjectID;
 
 // Middleware
 app.use(express.static(__dirname + '/public'));
@@ -27,21 +28,8 @@ app.get('/posts', function(req, res) {
 });
 
 app.get('/teams', function(req, res) {
-  mongo.connect(url, function(err, db) {
-    if (err) return db(err);
-    db.collection('posts').find({}).toArray(function(err, docs) {
-      // var teams = docs[0].message;
-      var html = '<ul>'
-      // console.log(teams);
-      docs.forEach(function(team) {
-        html += "<a href='" + "/teams/" + team.message + "'>" + "<li>" + team.message + "</li>" + "</a>";
-      })
-      html += "</ul>"
-      db.close();
-      res.send(html);
-    });
-  });
-});
+  res.redirect('/teams.html')
+})
 
 app.get('/roster', function(req, res) {
   mongo.connect(url, function(err, db) {
@@ -94,6 +82,7 @@ app.get('/schedule', function(req, res) {
 app.get('/teams/:name', function(req, res) {
   var name = req.params.name;
   var html;
+  var id;
 
   var findDocuments = function(db, callback) {
     var collection = db.collection('posts');
@@ -101,6 +90,7 @@ app.get('/teams/:name', function(req, res) {
       assert.equal(err, null);
       console.log("found the following, ", docs)
       html = docs;
+      // id = docs[0]._id
       callback(docs);
     });
   }
@@ -110,12 +100,20 @@ app.get('/teams/:name', function(req, res) {
 
     findDocuments(db, function() {
       db.close();
+      console.log(id)
       res.send(html)
     })
   })
   })
 
 // POST /posts
+
+// app.post('/posts/id', function(req, res) {
+//   mongo.connect(url, function(err, db) {
+
+//   })
+// })
+
 app.post('/posts', function(req, res) {
   console.log(req.body);
   var post = {
@@ -125,8 +123,10 @@ app.post('/posts', function(req, res) {
 
   mongo.connect(url, function(err, db) {
     db.collection('posts').insertOne(post, function(err, result) {
+      post.id = result.ops['0']._id;
+      console.log(post)
       db.close();
-      res.send(result);
+      res.json( {status: 200, id: post.id} );
     });
   })
 });
@@ -158,6 +158,21 @@ app.post('/posts/edit', function (req, res) {
   console.log('req.body: ', req.body)
   var name = req.body.name;
   var roster = req.body.roster;
+  var obj = {};
+  obj.name = name;
+  obj.roster = roster;
+
+    var findDocuments = function(db, callback) {
+    var collection = db.collection('posts');
+    collection.find({}).toArray(function(err, docs) {
+      assert.equal(err, null);
+      console.log("found the following, ", docs)
+      html = docs;
+      // id = docs[0]._id
+      callback(docs);
+    });
+  }
+
   function updateDocument (db, callback) {
     db.collection('posts').updateOne({'name': name}, { $set: {'roster': roster} }, function(err, result) {
       assert.equal(err, null);
@@ -169,6 +184,9 @@ app.post('/posts/edit', function (req, res) {
   mongo.connect(url, function(err, db) {
     assert.equal(null, err);
     console.log('Server open, now editing...');
+    findDocuments(db, function() {
+      db.close();
+    })
     updateDocument(db, function() {
       console.log('all done closing server!')
       db.close();

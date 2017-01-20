@@ -44,7 +44,7 @@
       <li><h4>First Name: {{ memberUse.firstName }} <a href="editFirstName?userId={{ memberUse._id }}">Edit</a></h4></li>
       <li><h4>Middle Init: {{ memberUse.midInit }} <a href="editMidInit?userId={{ memberUse._id }}">Edit</a></h4></li>
       <li><h4>Last Name: {{ memberUse.lastName }} <a href="editLastName?userId={{ memberUse._id }}">Edit</a></h4></li>
-      <li><h4>User Name: <form action="/editUserName" method="post"><input name="attrEdit" type="text" placeholder="Enter First Name"> <button>Make Change</button><form></h4></li>
+      <li><h4>User Name: <form action="/editUserName/userId={{ memberUse._id }}" method="post"><input name="attrEdit" type="text" placeholder="Enter First Name"> <button>Make Change</button><form></h4></li>
       <li><h4>Password: {{ memberUse.password }} <a href="editPassword?userId={{ memberUse._id }}">Edit</a></h4></li>
       <li><h4>Email: {{ memberUse.email }} <a href="editEmail?userId={{ memberUse._id }}">Edit</a></h4></li>
   <form action="/delProfile" method="post">

@@ -247,7 +247,7 @@ router.get('/editFirstName', function(req, resp, next){
     });
 });
 
-router.post('/editFirstName', function(req, resp, next){
+router.post('/editFirstName/:userId', function(req, resp, next){
     console.log( 'User Id is: ' + req.params.userId);
     mongo.connect(url, function(err, db){
       assert.equal(null, err);
@@ -277,7 +277,7 @@ router.get('/editMidInit', function(req, resp, next){
     });
 });
 
-router.post('/editMidInit', function(req, resp, next){
+router.post('/editMidInit/:userId', function(req, resp, next){
     console.log( 'User Id is: ' + req.params.userId);
     mongo.connect(url, function(err, db){
       assert.equal(null, err);
@@ -305,7 +305,7 @@ router.get('/editLastName', function(req, resp, next){
     });
 });
 
-router.post('/editLastName', function(req, resp, next){
+router.post('/editLastName/:userId', function(req, resp, next){
     console.log( 'User Id is: ' + req.params.userId);
     mongo.connect(url, function(err, db){
       assert.equal(null, err);
@@ -333,7 +333,7 @@ router.get('/editUserName', function(req, resp, next){
     });
 });
 
-router.post('/editUserName', function(req, resp, next){
+router.post('/editUserName/:userId', function(req, resp, next){
     console.log( 'User Id is: ' + req.params.userId);
     mongo.connect(url, function(err, db){
       assert.equal(null, err);
@@ -361,7 +361,7 @@ router.get('/editPassword', function(req, resp, next){
     });
 });
 
-router.post('/editPassword', function(req, resp, next){
+router.post('/editPassword/:userId', function(req, resp, next){
     console.log( 'User Id is: ' + req.params.userId);
     mongo.connect(url, function(err, db){
       assert.equal(null, err);
@@ -389,7 +389,7 @@ router.get('/editEmail', function(req, resp, next){
     });
 });
 
-router.post('/editEmail', function(req, resp, next){
+router.post('/editEmail/:userId', function(req, resp, next){
     console.log( 'User Id is: ' + req.params.userId);
     mongo.connect(url, function(err, db){
       assert.equal(null, err);

@@ -43,7 +43,7 @@
     <br><p>Profile Details</p>  <a id= "editAll" href="editEmail?userId={{ memberUse._id }}">Edit All</a><br>
       <li><h4>First Name: {{ memberUse.firstName }} <a href="editFirstName?userId={{ memberUse._id }}">Edit</a></h4></li>
       <li><h4>Middle Init: {{ memberUse.midInit }} <a href="editMidInit?userId={{ memberUse._id }}">Edit</a></h4></li>
-      <li><h4>Last Name: <form action="/editLastName" method="post"><input name="attrEdit" type="text" placeholder="Enter First Name"> <button>Make Change</button><form></h4></li>
+      <li><h4>Last Name: <form action="/editLastName/userId={{ memberUse._id }}" method="post"><input name="attrEdit" type="text" placeholder="Enter First Name"> <button>Make Change</button><form></h4></li>
       <li><h4>User Name: {{ memberUse.userName }} <a href="editUserName?userId={{ memberUse._id }}">Edit</a></h4></li>
       <li><h4>Password: {{ memberUse.password }} <a href="editPassword?userId={{ memberUse._id }}">Edit</a></h4></li>
       <li><h4>Email: {{ memberUse.email }} <a href="editEmail?userId={{ memberUse._id }}">Edit</a></h4></li>

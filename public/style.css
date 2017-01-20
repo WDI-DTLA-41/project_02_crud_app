@@ -1,0 +1,73 @@
+html {
+/*  background: rgba(133, 165, 204, 1); grey blue color */
+  background-color: white;
+}
+
+a {
+  display: inline;
+  margin-top: 5px;
+}
+
+h1 {
+  margin: 20px 15px 20px 0px;
+  padding: 5px;
+  border-radius:  5px;
+  background: rgba(133, 165, 204, 1)
+}
+
+.edit, .x {
+  margin: 2px;
+  display: inline
+  border-radius:5px;
+}
+
+span {
+  color: rgba(255,127,102,1)
+}
+body {
+  background: rgba(208, 228, 242, .5);
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+
+table {
+  background: lightgray;
+  width: 98% !important;
+}
+
+form {
+  display: inline;
+  margin: 2px;
+}
+
+#teamslist {
+margin: 20px 0px 20px 0px;
+  padding: 5px;
+  background: rgba(255, 246, 229, .8);
+  color: rgba(62,69,76, 1);
+  border-radius: 5px;
+  width: 98% !important;
+  list-style-type: none;
+}
+
+
+.list {
+  padding-left: 5px;
+}
+
+b {
+  color: rgba(255, 127, 102, 1)
+}
+
+.bgimg {
+
+  background: url("https://s-media-cache-ak0.pinimg.com/originals/e3/f4/fe/e3f4fefe46ef2f0014b8e740244b780e.jpg");
+  background-size: 100px;
+  background-repeat: no-repeat;
+  background-size: 100px;
+  height: 100px;
+}

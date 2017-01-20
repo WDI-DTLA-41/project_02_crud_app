@@ -12,17 +12,13 @@ https://wireframepro.mockflow.com/view/wireframeformysecondproject
 
 user-stories.md
 
-
-
 - Github
 
-
-
+https://baokhoavu.github.io/project_02_crud_app/
 
 - Heroku
 
-
-
+https://immense-caverns-57631.herokuapp.com/
 
 - The Get Go Of this Project's Progression
 

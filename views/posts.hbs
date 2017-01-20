@@ -11,7 +11,7 @@
   <div class='container' style='display:inline-block;'>
     <div class='row'>
         <div class='col-lg-7' style='text-align:right;'>
-            <form method='POST' action='/insert'>
+            <form method='POST' action='/insert' autocomplete="off">
                     <div class='input'>
                         <input type='text' id='name' name='name' placeholder='Name..'>
                     </div>
@@ -26,7 +26,8 @@
 
   <div>
   {{#each posts}}
-    <p class='origPost'><span style='font-weight:bold; font-size: 20px;'>{{this.name}}</span> : {{this.comment}}</p>
+    <p class='origPost'><span style='font-weight:bold; font-size: 20px;'>{{this.name}}</span>: {{this.comment}}</p>
+    <p class='dateAdd'><span style='font-weight:bold;'>Date</span>: {{this.date}}</p>
     <form method='POST' action='/posts/{{this._id}}/delete'>
       <button id='delete' name='delete' value={{this._id}} class='glyphicon glyphicon-trash'></button>
     </form>

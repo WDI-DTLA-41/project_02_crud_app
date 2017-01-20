@@ -37,6 +37,10 @@ $('#createPost').on('click', function(evt) {
   }
 });
 
+function renderTable () {
+
+}
+
 function editPost (evt) {
   console.log('you are about to submit edited post')
   var btn = this;
@@ -49,21 +53,31 @@ function editPost (evt) {
   obj.name = editName;
   obj.roster = editRoster;
   obj.id = this.parentNode.getAttribute('id');
-// debugger;
   li.innerHTML = editName + ": " + editRoster + editButton + xButton;
 
-//   if (changeName !== editName) {
-//       console.log('Team name was changed, creating new post')
-//     $.post('/posts', obj, function(res) {
-//     })
-//   } else {
       console.log('going to posts/edit!');
     $.post('/posts/edit', obj, function(res) {
+
     });
-  // }
+
+  if ($('#renderTable')){
+    console.log('table here')
+    window.location.reload();
+  }
+var render = '#renderTable'
+
+// $(render).load(location.href + " " + render + ">*"," ");
+  // var table = $('tbody').html();
+  // var teamNums = $('#teamslist').children();
+  // var newHtml;
+
+  // console.log(newHtml)
+
+  // $('#teamslist').children().each(function(num) {
+  // debugger;
+  //   console.log(num);
+  // });
 }
-
-
 
 function editClick (evt) {
   var target = this;
@@ -89,6 +103,11 @@ function xClick (evt) {
   $.post('/posts/delete', obj, function(res) {
     console.log('deleting stuff')
   })
+
+    if ($('#renderTable')){
+    console.log('table here')
+    window.location.reload();
+  }
 
   this.parentNode.remove()
 

@@ -7,15 +7,15 @@ var assert = require('assert');
 var url = process.env.MONGODB_URI || 'mongodb://localhost:27017/Project';
 
 router.get('/', function(req, res, next) {
-  res.render('index', {title: 'Stuff and more Stuff'});
+  res.render('index', {title: 'The Wall Listens'});
 });
 
 router.get('/about', function(req, res, next) {
-  res.render('about', {title: 'What this Stuff is About'})
+  res.render('about', {title: 'The Wall'})
 });
 
 router.get('/posts', function(req, res, next) {
-  res.render('posts', {title: 'What We Whisper About'})
+  res.render('posts', {title: 'What Written On The Wall'})
 });
 
 
@@ -33,7 +33,7 @@ router.post('/insert', function(req, res, next) {
     });
       db.close();
   });
-    res.redirect('/');
+    res.redirect('/stff');
 });
 
 router.get('/stff', function(req, res, next) {

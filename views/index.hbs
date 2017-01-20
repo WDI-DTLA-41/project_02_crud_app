@@ -1,39 +1,12 @@
-<h1>{{title}}</h1>
+<h1 style='text-align:center;'>{{title}}</h1>
 
-<nav class='nav nav-pills navbar-inverse'>
-    <li role='presentation'><a href='/'>Home</a></li>
-    <li role='presentation'><a href='/about'>About</a></li>
-    <li role='presentation' class='postPage'><a href='/posts'>Posts</a></li>
-</nav>
-{{!-- <div class='panel panel-default' 'col-md-5'>
-    <div class='panel-heading'>Whispers from Critters</div> --}}
-{{!-- <div class='row'> --}}
-    {{!-- <div class='col-md-6' style='height:300px;'> --}}
-        <div class='body'>
-        {{#each posts}}
-            <p>{{this.name}} : {{this.comment}}</p>
-            {{!-- <form method='post' action='/edit' --}}
-            {{!-- <form method='POST' action='/posts/{{this._id}}/'>
-            <button id='edit' name='Edit'>Edit</button>
-            </form>
-            <form method='POST' action='/posts/{{this._id}}/delete'>
-            <button id='delete' name='delete' value={{this._id}}>Delete</button>
-            </form> --}}
-        {{/each}}
-        </div>
-    </div>
+<div class='container'>
+    <nav class='nav nav-pills'>
+        <li role='presentation' class='postPage'><a href='/posts'><span class='glyphicon glyphicon-search'></span></a></li>
+        <li role='presentation'><a href='/'><span class='glyphicon glyphicon-home'></span></a></li>
+        <li role='presentation'><a href='/about'><span class='glyphicon glyphicon-file'></span></a></li>
+    </nav>
 </div>
 
-<div class='row'>
-    <div class='col-lg-7' style='text-align:right;'>
-        <form method='POST' action='/insert'>
-                <div class='input'>
-                    <input type='text' id='name' name='name' placeholder='Name..'>
-                </div>
-                <div class='input'>
-                    <input type='text' id='comment' name='comment' placeholder='Comment..'>
-                </div>
-                <button type='submit'>Submit</button>
-        </form>
-    </div>
+<div class='theBox'>
 </div>

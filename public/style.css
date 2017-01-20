@@ -6,3 +6,23 @@ div {
   /*color: blue;*/
   font-size: 12px;
 }
+
+.nav-pills {
+  display: flex;
+  justify-content: center;
+}
+
+.theBox {
+  border:1px solid black;
+  display:block;
+  height: 500px;
+  width: 800px ;
+  margin: auto;
+  position: relative;
+  background-image: url('http://www.killadj.com/blog/wp-content/uploads/2013/07/Background_brick_wall-1024x678.jpg');
+
+}
+
+body {
+  /*background-color: red;*/
+}

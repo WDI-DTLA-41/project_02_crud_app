@@ -8,24 +8,29 @@
   <form action='/' style='text-align:center;'>
     <button id='leave' name='leave' class='glyphicon glyphicon-home'></button>
   </form>
-  <div class='container' style='display:inline-block;'>
+  <div class='container'>
     <div class='row'>
-        <div class='col-lg-7' style='text-align:right;'>
+        <div class='col-lg-7'>
             <form method='POST' action='/insert' autocomplete="off">
                     <div class='input'>
                         <input type='text' id='name' name='name' placeholder='Name..'>
-                    </div>
-                    <div class='input'>
                         <input type='text' id='comment' name='comment' placeholder='Comment..'>
-                    </div>
                     <button type='submit' class='glyphicon glyphicon-pencil'></button>
+                    {{!-- </div>
+                    <div class='input'>
+                    </div> --}}
             </form>
         </div>
     </div>
   </div>
-
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
   <div>
   {{#each posts}}
+  <div style='text-align: center;'>
     <p class='origPost'><span style='font-weight:bold; font-size: 20px;'>{{this.name}}</span>: {{this.comment}}</p>
     <form method='POST' action='/posts/{{this._id}}/change' autocomplete="off">
       <input type='text' id='name' name='name' placeholder={{this.name}}>
@@ -41,5 +46,6 @@
     </div>
     </br>
   {{/each}}
+  </div>
   </div>
 </body>

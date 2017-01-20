@@ -175,7 +175,7 @@ app.post('/posts/edit', function (req, res) {
   // }
 
   function updateDocument (db, callback) {
-    db.collection('posts').updateOne({_id: objectId(obj.id)}, { $set: {'roster': roster} }, function(err, result) {
+    db.collection('posts').updateOne({_id: objectId(obj.id)}, { $set: {'roster': roster, 'name': name} }, function(err, result) {
       assert.equal(err, null);
       assert.equal(1, result.result.n)
       callback(result);

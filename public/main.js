@@ -58,6 +58,7 @@ function editPost (evt) {
   }
 }
 
+//turns the list items into two input fields to edit
 function editClick (evt) {
   var target = this;
   var team = target.parentElement.textContent;
@@ -69,6 +70,7 @@ function editClick (evt) {
   document.querySelector('#editRoster').value = roster;
 }
 
+//deletes list item from page and also from database
 function xClick (evt) {
   var target = this;
   var team = target.parentElement.textContent;
@@ -83,9 +85,7 @@ function xClick (evt) {
     if ($('#renderTable')){
     window.location.reload();
   }
-
   this.parentNode.remove()
-
 }
 
 //EVENT LISTENERS search entire document for elements created after load
@@ -94,6 +94,7 @@ $(document).on('click', '.x', xClick);
 $(document).on('click', '#editPost', editPost);
 
 //AJAX REQUESTS
+//creates html from /posts and saves it to id #posts which gets loaded up by ejs
 $.get('/posts', function(res) {
   var template = $('#posts-template').html() ;
   var compiled = _.template(template);

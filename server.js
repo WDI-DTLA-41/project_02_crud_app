@@ -1,3 +1,4 @@
+//variables & installation
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongo = require('mongodb').MongoClient;
@@ -17,6 +18,7 @@ app.use(morgan('dev'));
 // Routes
 
 // GET '/posts'
+//turns db into json and displayed on /posts
 app.get('/posts', function(req, res) {
   mongo.connect(url, function(err, db) {
     if (err) return db(err);
@@ -27,10 +29,12 @@ app.get('/posts', function(req, res) {
   });
 });
 
+//redirects to /teams.html
 app.get('/teams', function(req, res) {
   res.redirect('/teams.html')
 })
 
+//reads db and creates table based off of teams and rosters
 app.get('/roster', function(req, res) {
   mongo.connect(url, function(err, db) {
     if (err) return db(err);
@@ -47,6 +51,7 @@ app.get('/roster', function(req, res) {
   });
 });
 
+//reads db and shows the results on html page for teams
 app.get('/results', function(req, res) {
   mongo.connect(url, function(err, db) {
     if (err) return db(err);
@@ -54,7 +59,7 @@ app.get('/results', function(req, res) {
       var html = '<ul>'
     // console.log(teams);
       docs.forEach(function(team) {
-        html += "<li>" +team.message + ' results: ' + team.results + "</li>";
+        html += "<li>" +team.name + ' results: ' + '(No matches played)' + "</li>";
       })
       html += "</ul>"
       db.close();
@@ -63,15 +68,15 @@ app.get('/results', function(req, res) {
   });
 });
 
+//reads db and shows the teams' calendar schedule
 app.get('/schedule', function(req, res) {
   mongo.connect(url, function(err, db) {
     if (err) return db(err);
     db.collection('posts').find({}).toArray(function(err, docs) {
       var html = '<ul>'
       var teams = docs[0]
-      console.log(docs[0].schedule)
        docs.forEach(function(team) {
-        html += '<li>' + team.message + " Schedules: " + team.schedule + '</li>';
+        html += '<li>' + team.name + " Schedules: " +'("team.schedule" not defined yet, try back later!)' + '</li>';
       })
       html += "</ul>"
       res.send(html);
@@ -79,6 +84,7 @@ app.get('/schedule', function(req, res) {
   });
 });
 
+//reads db and finds teams with the same name as clicked/searched and returns all data associated with
 app.get('/teams/:name', function(req, res) {
   var name = req.params.name;
   var html;
@@ -88,7 +94,6 @@ app.get('/teams/:name', function(req, res) {
     var collection = db.collection('posts');
     collection.find({'name': name}).toArray(function(err, docs) {
       assert.equal(err, null);
-      console.log("found the following, ", docs)
       html = docs;
       // id = docs[0]._id
       callback(docs);
@@ -100,7 +105,6 @@ app.get('/teams/:name', function(req, res) {
 
     findDocuments(db, function() {
       db.close();
-      console.log(id)
       res.send(html)
     })
   })
@@ -108,12 +112,7 @@ app.get('/teams/:name', function(req, res) {
 
 // POST /posts
 
-// app.post('/posts/id', function(req, res) {
-//   mongo.connect(url, function(err, db) {
-
-//   })
-// })
-
+//post request adds input to the database using insertOne and storing the id into an object variable
 app.post('/posts', function(req, res) {
   console.log(req.body);
   var post = {
@@ -124,20 +123,19 @@ app.post('/posts', function(req, res) {
   mongo.connect(url, function(err, db) {
     db.collection('posts').insertOne(post, function(err, result) {
       post.id = result.ops['0']._id;
-      console.log(post)
       db.close();
       res.json( {status: 200, id: post.id} );
     });
   })
 });
 
+//post request connects to db and deletes document with matching team name
 app.post('/posts/delete', function(req, res) {
   console.log(req.body);
   var query = req.body.name;
   function removeDocument (db, callback) {
   db.collection('posts').deleteOne({'name': query}, function(err, result) {
   assert.equal(err, null);
-    // assert.equal(1, result.result.n)
     console.log("Removed team", query);
     callback(result)
     })
@@ -145,14 +143,13 @@ app.post('/posts/delete', function(req, res) {
 
   mongo.connect(url, function(err, db) {
     assert.equal(err, null);
-    console.log("Success, trying post delete request");
     removeDocument(db,function() {
-      //res.render('index', {data: teams})
     db.close();
     });
   })
 });
 
+//connects to db and updates document by searching for matching object id
 app.post('/posts/edit', function (req, res) {
   console.log('about to edit...')
   console.log('req.body: ', req.body)
@@ -162,17 +159,6 @@ app.post('/posts/edit', function (req, res) {
   obj.name = name;
   obj.roster = roster;
   obj.id = req.body.id;
-
-  //   var findDocuments = function(db, callback) {
-  //   var collection = db.collection('posts');
-  //   collection.find({}).toArray(function(err, docs) {
-  //     assert.equal(err, null);
-  //     console.log("found the following, ", docs)
-  //     html = docs;
-  //     // id = docs[0]._id
-  //     callback(docs);
-  //   });
-  // }
 
   function updateDocument (db, callback) {
     db.collection('posts').updateOne({_id: objectId(obj.id)}, { $set: {'roster': roster, 'name': name} }, function(err, result) {
@@ -184,9 +170,7 @@ app.post('/posts/edit', function (req, res) {
 
   mongo.connect(url, function(err, db) {
     assert.equal(null, err);
-    console.log('Server open, now editing...');
     updateDocument(db, function() {
-      console.log('all done closing server!')
       db.close();
     })
   })
@@ -194,7 +178,6 @@ app.post('/posts/edit', function (req, res) {
 })
 
 //Run Server
-
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
   console.log('Listening on port ' + port);

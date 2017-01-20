@@ -25,6 +25,7 @@ $('#createPost').on('click', function(evt) {
       if (res.status === 200) {
         var makeId = "id:" + res.id;
         console.log('id: ', res.id);
+        obj.id = makeId;
       $('#teamslist').append('<li class="list" ' + 'id="' + makeId + '">' + teamName.val() + ": " + roster.val() + editButton + xButton +  '</li>');
       document.querySelector('#teamName').value = "";
       document.querySelector('#roster').value = "";
@@ -47,8 +48,10 @@ function editPost (evt) {
   var obj = {};
   obj.name = editName;
   obj.roster = editRoster;
-  li.innerHTML = editName + ": " + editRoster + editButton + xButton;
+  obj.id = this.parentNode.getAttribute('id');
 // debugger;
+  li.innerHTML = editName + ": " + editRoster + editButton + xButton;
+
 //   if (changeName !== editName) {
 //       console.log('Team name was changed, creating new post')
 //     $.post('/posts', obj, function(res) {
@@ -67,8 +70,9 @@ function editClick (evt) {
   var team = target.parentElement.textContent;
   roster = team.split(':')[1];
   teamName = team.split(':')[0];
+  var objId = this.parentElement.getAttribute('id');
   console.log('clicked edit, saving', team)
-  this.parentNode.innerHTML = '<form><input type="text" placeholder="Edit Team (12s, 14s)" id="editName">' + ' ' + '<input type="text" placeholder="Edit Roster" id="editRoster"></form>' + ' ' + '<button id="editPost">Edit Team Info</button>';
+  this.parentNode.innerHTML = '<form id="'+ objId + '"><input type="text" placeholder="Edit Team (12s, 14s)" id="editName">' + ' ' + '<input type="text" placeholder="Edit Roster" id="editRoster"></form>' + ' ' + '<button id="editPost">Edit Team Info</button>';
   document.querySelector('#editName').value = teamName;
   document.querySelector('#editRoster').value = roster;
 }

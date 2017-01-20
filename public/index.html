@@ -42,7 +42,7 @@
         <% var xButton = '<button type="button" class="x" aria-label="Left Align"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>' %>
         <% var html; %>
         <% posts.forEach(function(post) { %>
-            <% html ='<li class="list">' + post.name + ": " + post.roster + editButton + xButton + '</li>' %>
+            <% html ='<li class="list" id="' + post._id + '">' + post.name + ": " + post.roster + editButton + xButton + '</li>' %>
           <%= html %>
         <% }) %>
       </ul>

@@ -161,20 +161,21 @@ app.post('/posts/edit', function (req, res) {
   var obj = {};
   obj.name = name;
   obj.roster = roster;
+  obj.id = req.body.id;
 
-    var findDocuments = function(db, callback) {
-    var collection = db.collection('posts');
-    collection.find({}).toArray(function(err, docs) {
-      assert.equal(err, null);
-      console.log("found the following, ", docs)
-      html = docs;
-      // id = docs[0]._id
-      callback(docs);
-    });
-  }
+  //   var findDocuments = function(db, callback) {
+  //   var collection = db.collection('posts');
+  //   collection.find({}).toArray(function(err, docs) {
+  //     assert.equal(err, null);
+  //     console.log("found the following, ", docs)
+  //     html = docs;
+  //     // id = docs[0]._id
+  //     callback(docs);
+  //   });
+  // }
 
   function updateDocument (db, callback) {
-    db.collection('posts').updateOne({'name': name}, { $set: {'roster': roster} }, function(err, result) {
+    db.collection('posts').updateOne({_id: objectId(obj.id)}, { $set: {'roster': roster} }, function(err, result) {
       assert.equal(err, null);
       assert.equal(1, result.result.n)
       callback(result);
@@ -184,9 +185,6 @@ app.post('/posts/edit', function (req, res) {
   mongo.connect(url, function(err, db) {
     assert.equal(null, err);
     console.log('Server open, now editing...');
-    findDocuments(db, function() {
-      db.close();
-    })
     updateDocument(db, function() {
       console.log('all done closing server!')
       db.close();

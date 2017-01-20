@@ -13,46 +13,44 @@
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-
-<div class="header">
-  <ul class="nav nav-pills">
-  <li role="presentation" class="active"><a href="/">Home</a></li>
-  <li role="presentation"><a href="/teams.html">Teams</a></li>
-  <li role="presentation"><a href="/roster.html">Roster</a></li>
-<!--   <li role="presentation"><a href="/results.html">Results</a></li>
-  <li role="presentation"><a href="/schedule.html">Schedule</a></li> -->
-</ul>
-</div>
+  <div class="header">
+    <ul class="nav nav-pills">
+      <li role="presentation" class="active"><a href="/">Home</a></li>
+      <li role="presentation"><a href="/teams.html">Teams</a></li>
+      <li role="presentation"><a href="/roster.html">Roster</a></li>
+    </ul>
+    <h1>Starlings San Gabriel Team Manager</h1>
+  </div>
 
 
-  <h1>Starlings San Gabriel Team Manager</h1>
   <form accept-charset="utf-8">
-  <input type="text" placeholder="Enter Team (12s, 14s)" id="teamName">
-  <input type="text" placeholder="Enter Roster" id="roster">
+    <input type="text" placeholder="Enter Team (12s, 14s)" id="teamName">
+    <input type="text" placeholder="Enter Roster" id="roster">
   </form>
   <button id="createPost">Add Team Info</button>
 
   <div class="dynamicContent">
     <div id="posts">
-
       <script id="posts-template" type="text/template">
-      <ul id="teamslist">
-        <% var editButton = '<button type="button" class="edit" aria-label="Left Align"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>'%>
-        <% var xButton = '<button type="button" class="x" aria-label="Left Align"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>' %>
-        <% var html; %>
-        <% posts.forEach(function(post) { %>
-            <% html ='<li class="list" id="' + post._id + '">' + post.name + ": " + post.roster + editButton + xButton + '</li>' %>
-          <%= html %>
-        <% }) %>
-      </ul>
+        <ul id="teamslist">
+          <% var editButton = '<button type="button" class="edit" aria-label="Left Align"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>'%>
+          <% var xButton = '<button type="button" class="x" aria-label="Left Align"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>' %>
+          <% var html; %>
+          <% posts.forEach(function(post) { %>
+              <% html ='<li class="list" id="' + post._id + '">' + post.name + ": " + post.roster + editButton + xButton + '</li>' %>
+            <%= html %>
+          <% }) %>
+        </ul>
       </script>
     </div>
 
    <p>Enter your team's <b>name</b> and <b>roster</b> (seperated by a comma). To edit, click the pencil icon. To delete, click the 'X' button</p>
     </div>
+  <div class="bgimg">
+  </div>
 
-  <script src ="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="main.js"></script>
 </body>
 </html>

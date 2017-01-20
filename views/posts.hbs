@@ -1,40 +1,41 @@
 <h1 style='text-align:center;'>{{title}}</h1>
 
-<form action='/stff' style='text-align:center;'>
-  <button id='listen' name='listen' class='glyphicon glyphicon-th-list  '></button>
-</form>
-<br>
-<form action='/' style='text-align:center;'>
-  <button id='leave' name='leave' class='glyphicon glyphicon-home'></button>
-</form>
-<div class='container' style='display:inline-block;'>
-  <div class='row'>
-      <div class='col-lg-7' style='text-align:right;'>
-          <form method='POST' action='/insert'>
-                  <div class='input'>
-                      <input type='text' id='name' name='name' placeholder='Name..'>
-                  </div>
-                  <div class='input'>
-                      <input type='text' id='comment' name='comment' placeholder='Comment..'>
-                  </div>
-                  <button type='submit' class='glyphicon glyphicon-pencil'></button>
-          </form>
-      </div>
+<body style='background-image: url("https://s-media-cache-ak0.pinimg.com/originals/a3/ef/ce/a3efce1295bb34966156298b88140382.jpg")';>
+  <form action='/wall' style='text-align:center;'>
+    <button id='listen' name='listen' class='glyphicon glyphicon-th-list  '></button>
+  </form>
+  <br>
+  <form action='/' style='text-align:center;'>
+    <button id='leave' name='leave' class='glyphicon glyphicon-home'></button>
+  </form>
+  <div class='container' style='display:inline-block;'>
+    <div class='row'>
+        <div class='col-lg-7' style='text-align:right;'>
+            <form method='POST' action='/insert'>
+                    <div class='input'>
+                        <input type='text' id='name' name='name' placeholder='Name..'>
+                    </div>
+                    <div class='input'>
+                        <input type='text' id='comment' name='comment' placeholder='Comment..'>
+                    </div>
+                    <button type='submit' class='glyphicon glyphicon-pencil'></button>
+            </form>
+        </div>
+    </div>
   </div>
-</div>
 
-<div>
-{{#each posts}}
-  <p class='origPost'><span style='font-weight:bold; font-size: 20px;'>{{this.name}}</span> : {{this.comment}}</p>
-  {{!-- <form method='post' action='/edit' --}}
-  <form method='POST' action='/posts/{{this._id}}/delete'>
-    <button id='delete' name='delete' value={{this._id}} class='glyphicon glyphicon-trash'></button>
-  </form>
-  <form method='POST' action='/posts/{{this._id}}/change' autocomplete="off">
-    <input type='text' id='name' name='name' placeholder={{this.name}}>
-    <input type='text' id='comment' name='comment' placeholder={{this.comment}}>
-    <button id='change' name='change' value={{this._id}} class='glyphicon glyphicon-pencil'></button>
-  </form>
-  </br>
-{{/each}}
-</div>
+  <div>
+  {{#each posts}}
+    <p class='origPost'><span style='font-weight:bold; font-size: 20px;'>{{this.name}}</span> : {{this.comment}}</p>
+    <form method='POST' action='/posts/{{this._id}}/delete'>
+      <button id='delete' name='delete' value={{this._id}} class='glyphicon glyphicon-trash'></button>
+    </form>
+    <form method='POST' action='/posts/{{this._id}}/change' autocomplete="off">
+      <input type='text' id='name' name='name' placeholder={{this.name}}>
+      <input type='text' id='comment' name='comment' placeholder={{this.comment}}>
+      <button id='change' name='change' value={{this._id}} class='glyphicon glyphicon-pencil'></button>
+    </form>
+    </br>
+  {{/each}}
+  </div>
+</body>

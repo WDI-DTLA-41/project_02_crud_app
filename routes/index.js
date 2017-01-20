@@ -33,18 +33,18 @@ router.post('/insert', function(req, res, next) {
     });
       db.close();
   });
-    res.redirect('/stff');
+    res.redirect('/wall');
 });
 
-router.get('/stff', function(req, res, next) {
+router.get('/wall', function(req, res, next) {
   mongo.connect(url, function(err, db) {
     assert.equal(null, err);
     db.collection('data').find().toArray(function(err, results){
       assert.equal(null, err);
       res.render('posts', {posts: results});
-    })
-  })
-})
+    });
+  });
+});
 
 router.post('/posts/:delete/delete', function(req, res, next) {
   mongo.connect(url, function(err, db) {
@@ -54,17 +54,13 @@ router.post('/posts/:delete/delete', function(req, res, next) {
       assert.equal(null, err);
       // db.close();
     });
-  db.close();
-  res.redirect('/stff');
+    db.close();
+    res.redirect('/wall');
+  });
 });
-})
 
 router.post('/posts/:change/change', function(req, res, next) {
   mongo.connect(url, function(err, db) {
-    // var newPost = {
-    //   name: req.body.name,
-    //   comment: req.body.comment,
-    // }
     var name = req.body.name;
     var comment = req.body.comment;
     var id = req.body.change;
@@ -74,40 +70,8 @@ router.post('/posts/:change/change', function(req, res, next) {
       assert.equal(null, err);
     }
     db.close();
-    res.redirect('/stff')
-  })
-})
-
-// router.get('/input', function(req, res, next) {
-//    var post = {
-//     name: req.body.name,
-//     comment: req.body.comment
-//   };
-//   mongo.connect(url, function(err, db) {
-//     assert.equal(null, err);
-//     db.collection('data').insertOne(post, function(err, db) {
-//       assert.equal(null, err);
-//       console.log('Comment Added');
-//     });
-//     var newData = db.collection('data').find().toArray(function(err, results){
-//       assert.equal(null, err);
-//         res.render('index', {posts: results});
-//     })
-//         db.close();
-//   });
-// })
-
-// });
-
-// router.post('/posts/:delete/delete', function(req, res, next) {
-//   mongo.connect(url, function(err, db) {
-//     assert.equal(null, err);
-//     db.collection('data').deleteOne({'name': null}, function(err, res) {
-//       assert.equal(null, err);
-//   })
-//     db.close();
-//   })
-//   res.redirect('/posts');
-// })
+    res.redirect('/wall');
+  });
+});
 
 module.exports = router

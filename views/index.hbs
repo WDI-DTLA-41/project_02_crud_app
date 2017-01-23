@@ -1,0 +1,25 @@
+<header>
+    <h1>{{ title }}</h1>
+    <form action="/login" method="GET">
+        <button>Log In</button>
+    </form>
+    <form action="/signup" method="GET">
+        <button>Sign Up</button>
+    </form>
+</header>
+<nav>
+    <a href="/">HOME</a>
+    <a href="#">HOW TO</a>
+    <a href="#">ABOUT ME</a>
+    <a href="#">CONTACT ME</a>
+</nav>
+{{# each memberUse }}
+    <div id="userId">
+        <h5>{{ this.fullName }}</h5>
+        <h5>{{this._id}}</h5>
+        <h5>{{this.userName}}</h5>
+    </div>
+{{/each}}
+<hr>
+<p>window shop</p>
+

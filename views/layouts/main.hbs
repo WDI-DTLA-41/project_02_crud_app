@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+    <link rel="stylesheet" href="/style.css">
+<!--     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+ -->    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.js"></script>
+<!--     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script> -->
+<!--     <script src=""></script> -->
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.js"
+      integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+      crossorigin="anonymous"></script>
+<!--     <script>
+      var client = io.connect('http://localhost:3000/');
+      $('#formMessage').submit(function(data){
+        client.emit('chat message', $('#formMessage>input').val());
+        $('#formMessage>input').val('');
+        return false;
+      });
+    </script> -->
+</head>
+<body>
+    {{{ body }}}
+<!--     <script>
+      var client = io();
+      $('form').submit(function(){
+        socket.emit('chat message', $('#m').val());
+        $('#m').val('');
+        return false;
+      });
+      client.on('chat message', function(msg){
+        $('#messages').append($('<li>').text(msg));
+      });
+    </script> -->
+    <script src="main.js"></script>
+</body>
+</html>

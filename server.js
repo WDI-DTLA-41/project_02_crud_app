@@ -117,7 +117,7 @@ app.post('/posts', function(req, res) {
   console.log(req.body);
   var post = {
     name: req.body.name,
-    roster: req.body.roster
+    roster: req.body.roster //split string and roster will become array.
   };
 
   mongo.connect(url, function(err, db) {

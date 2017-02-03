@@ -36,12 +36,13 @@
     <div id="posts">
       <script id="posts-template" type="text/template">
         <ul id="teamslist">
-          <% var editButton = '<button type="button" class="edit" aria-label="Left Align"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>'%>
-          <% var xButton = '<button type="button" class="x" aria-label="Left Align"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>' %>
-          <% var html; %>
           <% posts.forEach(function(post) { %>
-              <% html ='<li class="list" id="' + post._id + '">' + post.name + ": " + post.roster + editButton + xButton + '</li>' %>
-            <%= html %>
+            <li class="list" id="<%=post._id %>"><%= post.name %>:<%= post.roster %>
+              <button type="button" class="edit" aria-label="Left Align">
+                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="x" aria-label="Left Align"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+              </li>
           <% }) %>
         </ul>
       </script>

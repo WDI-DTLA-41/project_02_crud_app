@@ -1,100 +1,42 @@
-## Project 2: Building Your First Full*stack Application
+# Project 2: Sports Team Manager
 
 ![](project3-screenshot.png)
 
-#### Overview
+## Getting Started
 
-This second project is your first foray into building a full*stack application. 
-You'll be building a web application, which means you'll learn about what it takes 
-to build a functional application from the ground up yourself.
+### Installation
+The sports team manager requires no installation for the user. Just an internet connection and the link to the site. Load the site, and start managing your sports team!
 
-This is exciting! It's a lot, but we've given you the tools over the past few weeks, 
-and you get to decide what you do with it. And you get to be creative in choosing 
-what sort of application you want to build!
+### Instructions
+On the home page, you can add a team and roster to start. Once a team and a roster has been submitted from the input fields, click on the button for it to save. You can then click on the pencil icon to edit the selections or the X button to delete the entire entry. The /teams.html will display the teams and rosters on the site. The /rosters.html will show a table reflecting the team and all of the current members of the roster. If the roster is edited or updated, the table will automatically be updated to reflect the most current information.
 
-You will be working individually for this project, and you'll be designing the app 
-yourself. We hope you'll exercise creativity on this project, sketch some 
-wireframes before you start, and write user stories to define what your users 
-will want to do with the app.
+### MVP
+For minimal viable product, I wanted a web app with CRUD functionality being able to read, update, edit and delete user inputted information in regards to their sports teams and roster. The site should be able to persist submitted data as well as manipulate it as the user pleased. Also, the site should be able to display the teams and the roster within a easy to view table.
 
-Remember to keep things small and focus on mastering the fundamentals – 
-scope creep/feature creep is the biggest pitfall for any project!
+## Additional Reading
 
-#### Technical Requirements
+### Approach Taken for creating app
+I wanted a site with simple functionality to be able to edit a team's roster on the fly. Once the team has been added, the editing and displaying of the information should be intuitive and seamless.Instead of an overwhelming number of input fields to be completed before you could even see your data, a minimalistic approach was taken in making it just work.
 
-Build a web application using Node and Express that responds to HTTP Requests and manipulates data.
+### Wireframes
+A mockup was originally created using mockingbird which served as the blueprint for my site's design and layout. This wireframe can be viewed [here](https://github.com/yeahbq/project_02_crud_app/blob/master/home*page*wireframe.png). 
 
-Your application MUST
+### User Stories
+The user story created states
+>> "As a user, I will be able to add teams to the site and then edit or delete the
+>> fields of the roster, schedule and tournament results."
 
-* Persist Data from the client
-* Return data to the client
-* Modify persisted data
-* Destroy persisted data
-* Respond to GET and POST requests
-* Serve static content
-* Serve dynamic content
-* Use a client*side templating library to render JSON from the server
-* Use a server*side templating library to render HTML as a response
-* Use a CSS framework
-* Serve a favicon
-* Be deployed online and accessible to the publically*accessible
+A copy of the user stories file can be found [here](https://github.com/yeahbq/project_02_crud_app/blob/master/userstories.txt)
 
-Your repo MUST
-* Include wireframes that you designed during the planning process
-* Include user stories
+### Technologies Used
+The site was created using HTML, CSS, and JavaScript for everything clientside. CSS frameworks were made using Bootstrap. Templating was done using EJS. Additional libraries included jQuery. For server related tasks, the code was written using node.js. Node modules and middleware used include Morgan, body*parser, ejs, express, express*handlebars, handlebars, and mongod. The repo included .git for version tracking and GitHub for hosting and uploading commits online. The app itself is hosted through heroku and uses Mongodb to maintain the online database.
 
-Necessary Deliverables
+### Feature Requests
+* Adding more fields for the players of the roster (position, age, position)
+* Added pages to the site to display a team's schedule
+* Added pages to display the team's win*loss record and standing.
+* Include pictures for each player on the roster
 
-* A working full*stack application, built by you, hosted somewhere on the internet
-* A link to your hosted working app in the URL section of your Github repo
-* A git repository hosted on Github, with a link to your hosted project, and frequent commits dating back to the very beginning of the project. Commit early, commit often.
-* A readme.md file with explanations of the technologies used, the approach taken, installation instructions, unsolved problems, etc.
-* Wireframes of your app, hosted somewhere & linked in your readme
-* A link in your readme.md to the publically*accessible user stories you created
-
-Suggested Ways to Get Started
-
-* Plan
-* Write User stories
-
-> User stories define what a specific type of user wants to accomplish with your application. 
-> It's tempting to just make them todo lists for what needs to get done, 
-> but if you keep them small & focused on what a user cares about from their perspective, 
-> it'll help you know what to build!
-
-* Pseudo code
-* Wireframe
-* Write naive code
-* Read the docs
-* Find a tutorial
-* Commit early, commit often.
-* Use git branching to try out ideas
-
-# Potential Project Ideas
-
-### Personal Tracker
-
-Build something for yourself that tracks some data!
-
-### Cheerups
-
-The world is a depressing place.
-
-Your task is to create an app that will allow people to create and share "cheerups" * 
-happy little quips to brighten other peoples' days. Cheerups will be small * 
-limited to 139 characters. Members will be able to promote Cheerups that they like 
-and maybe even boost the reputation of the Cheerupper.
-
-### Bookmarket
-
-You will create an application where users can bookmark links they want to keep.
-
-But what if users could trade bookmarks for other bookmarks? Or sell bookmarks for points? 
-Or send bookmarks to your friends. Or something even crazier.
-
-### FourSquare Clone
-
-MongoDB is great for location based data like latitude and longitude.
-Allow users to report on their location and find nearby friends.
-
-
+### Unsolved Problems
+* If a user chooses to have more than one team open to edit, trying to submit the edits will give an error and only save the first edited team from the top of the page.
+* Rendering the table currently works using window.load. Because of the layout of the html pages, trying to use ajax requests to recreate the table is difficult.

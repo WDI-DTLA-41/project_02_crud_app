@@ -1,0 +1,51 @@
+<h1 style='text-align:center;'>{{title}}</h1>
+
+<body style='background-image: url("https://s-media-cache-ak0.pinimg.com/originals/a3/ef/ce/a3efce1295bb34966156298b88140382.jpg")';>
+  <form action='/wall' style='text-align:center;'>
+    <button id='listen' name='listen' class='glyphicon glyphicon-th-list  '></button>
+  </form>
+  <br>
+  <form action='/' style='text-align:center;'>
+    <button id='leave' name='leave' class='glyphicon glyphicon-home'></button>
+  </form>
+  <div class='container'>
+    <div class='row'>
+        <div class='col-lg-7'>
+            <form method='POST' action='/insert' autocomplete="off">
+                    <div class='input'>
+                        <input type='text' id='name' name='name' placeholder='Name..'>
+                        <input type='text' id='comment' name='comment' placeholder='Comment..'>
+                    <button type='submit' class='glyphicon glyphicon-plus'></button>
+                    {{!-- </div>
+                    <div class='input'>
+                    </div> --}}
+            </form>
+        </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div>
+  {{#each posts}}
+  <div style='text-align: center;'>
+    <p class='origPost'><span style='font-weight:bold; font-size: 20px;'>{{this.name}}</span>: {{this.comment}}</p>
+    <form method='POST' action='/posts/{{this._id}}/change' autocomplete="off">
+      <input type='text' id='name' name='name' placeholder={{this.name}}>
+      <input type='text' id='comment' name='comment' placeholder='. . .'>
+      <button id='change' name='change' value={{this._id}} class='glyphicon glyphicon-pencil'></button>
+    </form>
+    <form method='POST' action='/posts/{{this._id}}/delete'>
+      <button id='delete' name='delete' value={{this._id}} class='glyphicon glyphicon-trash'></button>
+    </form>
+    <p class='dateAdd'><span style='font-weight:bold;'>Date</span>: {{this.date}}</p>
+    <div id='vote'>
+      <div><span id='upVote' class='glyphicon glyphicon-arrow-up'></span><span id='downVote' class='glyphicon glyphicon-arrow-down'></span></div>
+    </div>
+    </br>
+  {{/each}}
+  </div>
+  </div>
+</body>

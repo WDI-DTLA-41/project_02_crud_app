@@ -1,98 +1,66 @@
-## Project 2: Building Your First Full-stack Application
+### The Wall ( CRUD )
 
-#### Overview
+Web Application incorporating CRUD practices. Users can view three different rendered pages by navigating through icons. 
+When navigating through to the content page(search icon), they can then add a post with an alias while viewing previous posts. 
+If they choose to do so, they can also edit either the alias or the comment left from anyone. 
 
-This second project is your first foray into building a full-stack application. 
-You'll be building a web application, which means you'll learn about what it takes 
-to build a functional application from the ground up yourself.
+### Wireframe
 
-This is exciting! It's a lot, but we've given you the tools over the past few weeks, 
-and you get to decide what you do with it. And you get to be creative in choosing 
-what sort of application you want to build!
+https://wireframepro.mockflow.com/view/wireframeformysecondproject
 
-You will be working individually for this project, and you'll be designing the app 
-yourself. We hope you'll exercise creativity on this project, sketch some 
-wireframes before you start, and write user stories to define what your users 
-will want to do with the app.
 
-Remember to keep things small and focus on mastering the fundamentals – 
-scope creep/feature creep is the biggest pitfall for any project!
+### Github
 
-#### Technical Requirements
+https://baokhoavu.github.io/project_02_crud_app/
 
-Build a web application using Node and Express that responds to HTTP Requests and manipulates data.
+### Heroku
 
-Your application MUST
+https://immense-caverns-57631.herokuapp.com/
 
-- Persist Data from the client
-- Return data to the client
-- Modify persisted data
-- Destroy persisted data
-- Respond to GET and POST requests
-- Serve static content
-- Serve dynamic content
-- Use a client-side templating library to render JSON from the server
-- Use a server-side templating library to render HTML as a response
-- Use a CSS framework
-- Serve a favicon
-- Be deployed online and accessible to the publically-accessible
+### The Get Go Of this Project's Progression
 
-Your repo MUST
-- Include wireframes that you designed during the planning process
-- Include user stories
+> First idea was to make a Kappa Counter which tracks a word used in a
+  real time chat log but that will be a future project. Doing this, was
+  unsure how to monitor chat consistently plus it was more of a self
+  use app idea.
 
-Necessary Deliverables
+> Second idea was to make a real time chat room but realized after day1
+  that I should focus on learning db/route/CRUD first. Will want to
+  eventually incorporate this later on.
 
-- A working full-stack application, built by you, hosted somewhere on the internet
-- A link to your hosted working app in the URL section of your Github repo
-- A git repository hosted on Github, with a link to your hosted project, and frequent commits dating back to the very beginning of the project. Commit early, commit often.
-- A readme.md file with explanations of the technologies used, the approach taken, installation instructions, unsolved problems, etc.
-- Wireframes of your app, hosted somewhere & linked in your readme
-- A link in your readme.md to the publically-accessible user stories you created
+> Third idea(this) is a blog/forum where anyone can create, read, edit,
+  and delete theirs and each other's posts while hiding names. Also with
+  the ability to upVote or downVote but not with a counter, you can see
+  if someone likes/dislikes that comment by that person. Clicking one will
+  also toggle the other one off so at any point past opinions can be
+  overwritten. A counter will eventually be made for this.
 
-Suggested Ways to Get Started
+> Used Bootstrap as the CSS framework after looking over a few, concept
+  wise the idea is very helpful and the layout of using columns can help
+  when wanting to put a lot of individual content in specific areas. For
+  my current project, I did not require too much so will probably touch
+  back up on this later when I add more features to continue on this idea.
 
-- Plan
-- Write User stories
+> Template wise, used handlebars, pros and cons while learning to
+  implement it but can see why it's great for understanding the value of
+  why templating is important in situations. Enjoyed learning EJS more
+  and wish I incorporated it instead but for the sake of learning, based
+  off handlebars. Will approach this later.
 
-> User stories define what a specific type of user wants to accomplish with your application. 
-> It's tempting to just make them todo lists for what needs to get done, 
-> but if you keep them small & focused on what a user cares about from their perspective, 
-> it'll help you know what to build!
+> Realized over hours and hours that targeting with ._id is most efficient
+  rather than somehow trying to find->sort->remove. Idea behind this was
+  to remove the most recent document added into collection by sorting,
+  finding it, and then remove which targets the last document. Lot of flaws
+  with this as it doesn't specifically let you target any document within
+  the collection.
 
-- Pseudo code
-- Wireframe
-- Write naive code
-- Read the docs
-- Find a tutorial
-- Commit early, commit often.
-- Use git branching to try out ideas
+> Tried making everything on one page rather than a few and learned how
+  that was a terrible idea as many things overlap and can break.
 
-# Potential Project Ideas
+> Theme/Layout kept changing throughout the progression of each button.
+  Using wireframe helped to incorporate my changes beforehand to see
+  what layout will look like before making changes.
 
-### Personal Tracker
-
-Build something for yourself that tracks some data!
-
-### Cheerups
-
-The world is a depressing place.
-
-Your task is to create an app that will allow people to create and share "cheerups" - 
-happy little quips to brighten other peoples' days. Cheerups will be small - 
-limited to 139 characters. Members will be able to promote Cheerups that they like 
-and maybe even boost the reputation of the Cheerupper.
-
-### Bookmarket
-
-You will create an application where users can bookmark links they want to keep.
-
-But what if users could trade bookmarks for other bookmarks? Or sell bookmarks for points? 
-Or send bookmarks to your friends. Or something even crazier.
-
-### FourSquare Clone
-
-MongoDB is great for location based data like latitude and longitude.
-Allow users to report on their location and find nearby friends.
-
+> I see value in this in a more advanced state with features that include:
+  login/password, comments on posts, '/' display could use more real-time.
 

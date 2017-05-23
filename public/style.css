@@ -1,0 +1,30 @@
+div {
+  height: 50px;
+}
+
+#delete, #edit {
+  font-size: 12px;
+}
+
+.nav-pills {
+  display: flex;
+  justify-content: center;
+}
+
+.theBox {
+  border:1px solid black;
+  display:block;
+  height: 500px;
+  width: 800px ;
+  margin: auto;
+  position: relative;
+  background-image: url('http://manohome.com/wp-content/uploads/2015/07/interior-drop-dead-gorgeous-stone-grey-brick-wall-for-home-wall-decoration-ideas-divine-images-of-home-interior-wall-with-grey-brick-wall-936x749.jpg');
+}
+
+.makeRed {
+  color: red;
+}
+
+.makeOrange {
+  color: orange;
+}

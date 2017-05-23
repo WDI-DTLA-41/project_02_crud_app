@@ -1,16 +1,13 @@
 ### The Wall ( CRUD )
 
-
-
-
+Web Application incorporating CRUD practices. Users can view three different rendered pages by navigating through icons. 
+When navigating through to the content page(search icon), they can then add a post with an alias while viewing previous posts. 
+If they choose to do so, they can also edit either the alias or the comment left from anyone. 
 
 ### Wireframe
 
 https://wireframepro.mockflow.com/view/wireframeformysecondproject
 
-### User Story
-
-user-stories.md
 
 ### Github
 
